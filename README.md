@@ -1,6 +1,6 @@
 # 南航《高等工程数学》作业-2023 | NUAA-Advanced-Engineering-Mathematics-Assignment-2023
 
-Ciallo～(∠・ω< )⌒★
+机电学院
 
 ---
 
