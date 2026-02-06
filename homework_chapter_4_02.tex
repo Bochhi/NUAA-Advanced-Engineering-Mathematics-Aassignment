@@ -1,0 +1,1147 @@
+\documentclass[12pt,fleqn]{article}%全局的默认对齐方式设置为左对齐。
+%\usepackage[fleqn]{amsmath}默认是左对齐，而且是全局设置，所以之后对于段内公式即使加入\centering或者是都无法做到使公式居中。
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{nccmath}
+\usepackage{amssymb}
+%\usepackage{bm}
+%\usepackage{multicol} %用于实现在同一页中实现不同的分栏
+\usepackage{color}
+
+
+\linespread{}
+
+\geometry{a4paper,left=1in, right=1in, top=1in, bottom=1in}
+
+\title{\heiti 矩阵论第四章作业}
+\author{XXX SZ2305XXX}
+\date{2023年10月13日}
+
+\renewcommand\arraystretch{0.8}
+\renewcommand{\baselinestretch}{1.5}
+
+
+%\newenvironment{amatrix}[1]{%
+%	\left(\begin{array}{@{}*{#1}{c}|c@{}}
+%	}{%
+%	\end{array}\right)}
+
+
+
+
+\begin{document}
+	\maketitle
+	\section*{\kaishu 习题3.}
+	\subsection*{(1) \kaishu {解：}}
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} =
+			\begin{pmatrix}
+				1 & 2 & 3 & 0 \\
+				0 & 2 & 1 & -1 \\
+				1 & 0 & 2 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	取
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_1 =
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				-1 & 0 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	则
+	\begin{ceqn}
+		\begin{align*}
+		\boldsymbol{L}_1\boldsymbol{A} =
+			\begin{pmatrix}
+				1 & 2 & 3 & 0 \\
+				0 & 2 & 1 & -1 \\
+				0 & -2 & -1 & 1
+			\end{pmatrix} 
+			= \boldsymbol{A} ^ {(1)}
+		\end{align*}‎
+	\end{ceqn}
+	取
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_2 =
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 1 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	则
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_2(\boldsymbol{L}_1\boldsymbol{A}) =
+			\begin{pmatrix}
+				1 & 2 & 3 & 0 \\
+				0 & 2 & 1 & -1 \\
+				0 & 0 & 0 & 0
+			\end{pmatrix} 
+			= \boldsymbol{A} ^ {(2)}
+		\end{align*}‎
+	\end{ceqn}
+	因此
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} = \boldsymbol{L}_1^{-1} \boldsymbol{L}_2^{-1} \boldsymbol{A} ^ {(2)} &=
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				1 & 0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & -1 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 2 & 3 & 0 \\
+				0 & 2 & 1 & -1 \\
+				0 & 0 & 0 & 0
+			\end{pmatrix}  \\
+			&= 
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				1 & -1 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 2 & 3 & 0 \\
+				0 & 2 & 1 & -1 \\
+				0 & 0 & 0 & 0
+			\end{pmatrix} \\
+			&= 
+			\begin{pmatrix}
+				1 & 0 \\
+				0 & 1 \\
+				1 & -1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 2 & 3 & 0 \\
+				0 & 2 & 1 & -1 
+			\end{pmatrix}
+		\end{align*}‎
+	\end{ceqn}
+	令$\boldsymbol{B} = \begin{pmatrix}
+		1 & 0 \\
+		0 & 1 \\
+		1 & -1  
+	\end{pmatrix} $，
+	$\boldsymbol{C} = \begin{pmatrix}
+		1 & 2 & 3 & 0 \\
+		0 & 2 & 1 & -1 
+	\end{pmatrix}$，
+	则$\boldsymbol{A} = \boldsymbol{BC}$.
+	此即$\boldsymbol{A}$的一个满秩分解.\\ \\ \\
+
+	
+	
+	\subsection*{(4) \kaishu {解：}}
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} =
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 & 1 \\
+				3 & 2 & 1 & 1 & -3 \\
+				0 & 1 & 2 & 2 & 6 \\
+				5 & 4 & 3 & 3 & -1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	取
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_1 =
+			\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				-3 & 1 & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				-5 & 0 & 0 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	则
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_1\boldsymbol{A} =
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 & 1 \\
+				0 & -1 & -2 & -2 & -6 \\
+				0 & 1 & 2 & 2 & 6 \\
+				0 & -1 & -2 & -2 & -6 
+			\end{pmatrix} 
+			= \boldsymbol{A} ^ {(1)}
+		\end{align*}‎
+	\end{ceqn}
+	取
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_2 =
+			\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				0 & -1 & 0 & 0 \\
+				0 & 1 & 1 & 0 \\
+				0 & -1 & 0 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	则
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_2(\boldsymbol{L}_1\boldsymbol{A}) =
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 & 1 \\
+				0 & 1 & 2 & 2 & 6 \\
+				0 & 0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0 & 0 
+			\end{pmatrix} 
+			= \boldsymbol{A} ^ {(2)}
+		\end{align*}‎
+	\end{ceqn}
+	因此
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} = \boldsymbol{L}_1^{-1} \boldsymbol{L}_2^{-1} \boldsymbol{A} ^ {(2)} &=
+			\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				3 & 1 & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				5 & 0 & 0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				0 & -1 & 0 & 0 \\
+				0 & 1 & 1 & 0 \\
+				0 & -1 & 0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 & 1 \\
+				0 & 1 & 2 & 2 & 6 \\
+				0 & 0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0 & 0 
+			\end{pmatrix}  \\
+			&= 
+			\begin{pmatrix}
+				1 & 0 & 0 & 0 \\
+				3 & -1 & 0 & 0 \\
+				0 & 1 & 1 & 0 \\
+				5 & -1 & 0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 & 1 \\
+				0 & 1 & 2 & 2 & 6 \\
+				0 & 0 & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0 & 0 
+			\end{pmatrix} \\
+			&= 
+			\begin{pmatrix}
+				1 & 0 \\
+				3 & -1 \\
+				0 & 1 \\
+				5 & -1
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 & 1 \\
+				0 & 1 & 2 & 2 & 6
+			\end{pmatrix}
+		\end{align*}‎
+	\end{ceqn}
+	令$\boldsymbol{B} = \begin{pmatrix}
+		1 & 0 \\
+		3 & -1 \\
+		0 & 1 \\
+		5 & -1
+	\end{pmatrix} $，
+	$\boldsymbol{C} = \begin{pmatrix}
+		1 & 1 & 1 & 1 & 1 \\
+		0 & 1 & 2 & 2 & 6
+	\end{pmatrix}$，
+	则$\boldsymbol{A} = \boldsymbol{BC}$.
+	此即$\boldsymbol{A}$的一个满秩分解.
+	\clearpage
+	
+	
+	\section*{\kaishu 习题10.}
+	\subsection*{(1) \kaishu {解：}}
+	%第(1)小问和第(2)小问分别用了两种书写方法。
+	原方程组的系数矩阵$\boldsymbol{A}$为：
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} =
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				1 & 1 & 9 \\
+				1 & 2 & -6 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	取
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_1 =
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				-\frac12 & 1 & 0 \\
+				-\frac12 & 0 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	则
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_1\boldsymbol{A} =
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				0 & -\frac12 & 7 \\
+				0 & \frac12 & -8 
+			\end{pmatrix} 
+			= \boldsymbol{A} ^ {(1)}
+		\end{align*}‎
+	\end{ceqn}
+	取
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_2 =
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 1 & 1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	则
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}_2(\boldsymbol{L}_1\boldsymbol{A}) =
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				0 & -\frac12 & 7 \\
+				0 & 0 & -1 
+			\end{pmatrix} 
+			= \boldsymbol{A} ^ {(2)}
+		\end{align*}‎
+	\end{ceqn}
+	因此
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} = \boldsymbol{L}_1^{-1} \boldsymbol{L}_2^{-1} \boldsymbol{A} ^ {(2)} &=
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				\frac12 & 1 & 0 \\
+				\frac12 & 0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & -1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				0 & -\frac12 & 7 \\
+				0 & 0 & -1 
+			\end{pmatrix}   \\
+			&= 
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				\frac12 & 1 & 0 \\
+				\frac12 & -1 & 1 
+			\end{pmatrix}
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				0 & -\frac12 & 7 \\
+				0 & 0 & -1 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	令$\boldsymbol{L} = \begin{pmatrix}
+		1 & 0 & 0 \\
+		\frac12 & 1 & 0 \\
+		\frac12 & -1 & 1 
+	\end{pmatrix} $，
+	$\boldsymbol{U} = \begin{pmatrix}
+		2 & 3 & 4 \\
+		0 & -\frac12 & 7 \\
+		0 & 0 & -1
+	\end{pmatrix}$，
+	则$\boldsymbol{A} = \boldsymbol{LU}$.
+	此即$\boldsymbol{A}$的$\boldsymbol{LU}$分解.\\
+	原方程组$\boldsymbol{A}x=b$化为$ \left\{
+	\begin{aligned}
+		\boldsymbol{L}y &= b \\
+		\boldsymbol{U}x &= y
+	\end{aligned}
+	\right. $ 
+	. \\
+	\indent 解线性方程组
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}y=
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				\frac12 & 1 & 0 \\
+				\frac12 & -1 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				y_1 \\
+				y_2 \\
+				y_3
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+				1 \\
+				-7 \\
+				9
+			\end{pmatrix} 
+			= b
+		\end{align*}‎
+	\end{ceqn}
+	得$
+		\begin{pmatrix}
+			y_1 \\
+			y_2 \\
+			y_3
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			1 \\
+			-\frac{15}{2} \\
+			1
+		\end{pmatrix} $. \\\\
+	\indent 再解线性方程组
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{U}x=
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				0 & -\frac{1}{2} & 7 \\
+				0 & 0 & -1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				x_1 \\
+				x_2 \\
+				x_3
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+				1 \\
+				-\frac{15}{2} \\
+				1
+			\end{pmatrix} 
+			= y
+		\end{align*}‎
+	\end{ceqn}
+	得$
+	\begin{pmatrix}
+		x_1 \\
+		x_2 \\
+		x_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 \\
+		1 \\
+		-1
+	\end{pmatrix} $.此即原方程组的解.\\\\\\
+	
+	
+	\subsection*{(2) \kaishu {解：}}
+%	\[
+%	\left(\begin{array}{ccc|ccc}  
+%		2 & 3 & 4 & 1 & 0 & 0 \\  
+%		3 & 5 & 2 & 0 & 1 & 0 \\
+%		4 & 3 & 30 & 0 & 0 & 1   
+%	\end{array}\right)
+%	\]
+	
+	原方程组的系数矩阵$\boldsymbol{A}$为：
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} =
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				3 & 5 & 2 \\
+				4 & 3 & 30 
+			\end{pmatrix} 
+		\end{align*}‎
+	\end{ceqn}
+	有
+	\begin{ceqn}
+		\begin{align*}
+			(\boldsymbol{A\mid I}) =
+				\left(\begin{array}{ccc|ccc}  
+					2 & 3 & 4 & 1 & 0 & 0 \\  
+					3 & 5 & 2 & 0 & 1 & 0 \\
+					4 & 3 & 30 & 0 & 0 & 1   
+				\end{array}\right)
+			\rightarrow
+				\left(\begin{array}{ccc|ccc}  
+					2 & 3 & 4 & 1 & 0 & 0 \\  
+					0 & \frac12 & -4 & -\frac32 & 1 & 0 \\
+					0 & -3 & 22 & -2 & 0 & 1   
+				\end{array}\right)
+			\rightarrow
+				\left(\begin{array}{ccc|ccc}  
+					2 & 3 & 4 & 1 & 0 & 0 \\  
+					0 & \frac12 & -4 & -\frac32 & 1 & 0 \\
+					0 & 0 & -2 & \color{red}-11 & 6 & 1   
+				\end{array}\right)
+		\end{align*}‎
+	\end{ceqn}
+	因此$\boldsymbol A = {\color{green}
+	\begin{pmatrix}
+		1 & 0 & 0 \\
+		\frac32 & 1 & 0 \\
+		2 & -6 & 1 
+	\end{pmatrix} } 
+	\begin{pmatrix}
+		2 & 3 & 4 \\
+		0 & \frac12 & -4 \\
+		0 & 0 & 2 
+	\end{pmatrix} $. \qquad {\color{green} \text{（绿色矩阵是变换矩阵求逆得来的）}} \\[8pt]
+	令$\boldsymbol{L} = \begin{pmatrix}
+		1 & 0 & 0 \\
+		\frac32 & 1 & 0 \\
+		2 & -6 & 1 
+	\end{pmatrix} $，
+	$\boldsymbol{U} = \begin{pmatrix}
+		2 & 3 & 4 \\
+		0 & \frac12 & -4 \\
+		0 & 0 & 2
+	\end{pmatrix}$，
+	则$\boldsymbol{A} = \boldsymbol{LU}$.
+	此即$\boldsymbol{A}$的$\boldsymbol{LU}$分解.\\
+	原方程组$\boldsymbol{A}x=b$化为$ \left\{
+	\begin{aligned}
+		\boldsymbol{L}y &= b \\
+		\boldsymbol{U}x &= y
+	\end{aligned}
+	\right. $ 
+	. \\
+	\indent 解线性方程组
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{L}y=
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				\frac32 & 1 & 0 \\
+				2 & -6 & 1
+			\end{pmatrix} 
+			\begin{pmatrix}
+				y_1 \\
+				y_2 \\
+				y_3
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+				0 \\
+				-5 \\
+				28
+			\end{pmatrix} 
+			= b
+		\end{align*}‎
+	\end{ceqn}
+	得$
+	\begin{pmatrix}
+		y_1 \\
+		y_2 \\
+		y_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		0 \\
+		-5 \\
+		-2
+	\end{pmatrix} $. \\\\
+	\indent 再解线性方程组
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{U}x=
+			\begin{pmatrix}
+				2 & 3 & 4 \\
+				0 & \frac12 & -4 \\
+				0 & 0 & 2
+			\end{pmatrix} 
+			\begin{pmatrix}
+				x_1 \\
+				x_2 \\
+				x_3
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+				0 \\
+				-5 \\
+				-2
+			\end{pmatrix} 
+			= y
+		\end{align*}‎
+	\end{ceqn}
+	得$
+	\begin{pmatrix}
+		x_1 \\
+		x_2 \\
+		x_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 \\
+		-2 \\
+		1
+	\end{pmatrix} $.此即原方程组的解.
+	\clearpage
+	
+	
+	\section*{\kaishu 习题12.}
+	\subsection*{(2) \kaishu {解：}}
+	\begin{ceqn}
+		\begin{align*}
+			\boldsymbol{A} =
+			\begin{pmatrix}
+				1 & 1 & -1 \\
+				-1 & 1 & 1 \\
+				1 & 1 & -1 \\
+				1 & 1 & 1 
+			\end{pmatrix}
+		\end{align*}‎
+	\end{ceqn}
+	记$\alpha_1 = 
+	\begin{pmatrix}
+		1 &	-1 & 1 & 1
+	\end{pmatrix}^T$，
+	$\alpha_2 = 
+	\begin{pmatrix}
+		1 &	1 & 1 & 1
+	\end{pmatrix}^T$，
+	$\alpha_3 = 
+	\begin{pmatrix}
+		-1 & 1 & -1 & 1
+	\end{pmatrix}^T$，\\[8pt]
+	令
+	\begin{align*}
+		\beta_1 ={} & \alpha_1 = \begin{pmatrix}
+			1 &	-1 & 1 & 1
+		\end{pmatrix}^T, \\
+		q_1 ={} & \frac{\beta_1}{{\parallel}{\beta_1}{\parallel}}
+		 = %这里不打三个大括号有报错
+		\frac{\alpha_1}{\sqrt{(\beta_1,\beta_1)}} 
+		 = 
+		 \frac{\begin{pmatrix}
+		 		1 &	-1 & 1 & 1
+		 	\end{pmatrix}^T}{\sqrt{1^2+1^2+1^2+1^2}}
+	 	 = 
+		 \frac12 \begin{pmatrix}
+					1 &	-1 & 1 & 1
+				\end{pmatrix}^T ,\\
+		\beta_2 ={} & \alpha_2 - \frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}\beta_1 = 
+		\begin{pmatrix}
+			1 &	1 & 1 & 1
+		\end{pmatrix}^T
+		-
+		\frac24 \begin{pmatrix}
+				1 &	-1 & 1 & 1
+				\end{pmatrix}^T
+		 = 
+		 \frac12 \begin{pmatrix}
+		 	1 &	3 & 1 & 1
+		 \end{pmatrix}^T, \\
+		q_2 ={} & \frac{\beta_2}{{\parallel}{\beta_2}{\parallel}} = 
+		\frac{\beta_2}{\sqrt{(\beta_2,\beta_2)}}  = 
+		\frac{\frac12
+			\begin{pmatrix}
+				1 &	3 & 1 & 1
+			\end{pmatrix}^T}{\sqrt{{(\frac12)}^2 (1^2+3^2+1^2+1^2)}}
+		 = 
+		\frac{1}{2\sqrt{3}} 
+		\begin{pmatrix}
+			1 &	3 & 1 & 1
+		\end{pmatrix}^T ,\\
+		\beta_3 ={} & \alpha_3 - \frac{(\alpha_3,\beta_1)}{(\beta_1,\beta_1)}\beta_1 - \frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}\beta_2 = 
+		\begin{pmatrix}
+			-1 & 1 & -1 & 1
+		\end{pmatrix}^T
+		 - 
+		(\frac{-2}{4}) \times
+		\begin{pmatrix}
+			1 &	-1 & 1 & 1
+		\end{pmatrix}^T \\
+		 & - 
+		\frac{\frac12 \times 2}{\frac14 \times 12} \times
+		\frac12 \begin{pmatrix}
+			1 &	3 & 1 & 1
+		\end{pmatrix}^T
+		 = 
+		\frac 23 \begin{pmatrix}
+			-1 & 0 & -1 & 2
+		\end{pmatrix}^T, \\
+		q_3 ={} & \frac{\beta_3}{{\parallel}{\beta_3}{\parallel}} = 
+		\frac{\beta_3}{\sqrt{(\beta_3,\beta_3)}}  = 
+		\frac{\frac 23 \begin{pmatrix}
+				-1 & 0 & -1 & 2
+			\end{pmatrix}^T}{\sqrt{(\frac23)^2 [(-1)^2+0^2+(-1)^2+2^2]}}
+		= 
+		\frac{1}{\sqrt{6}} 
+		\begin{pmatrix}
+			-1 & 0 & -1 & 2
+		\end{pmatrix}^T.
+	\end{align*}
+	有
+	\begin{ceqn}
+	\[	\begin{cases}
+			\alpha_1 = \parallel \beta_1 \parallel q_1 \\
+			\alpha_2 = \parallel \beta_2 \parallel q_2 + (\alpha_2,q_1)q_1 \\
+			\alpha_3 = \parallel \beta_3 \parallel q_3 + (\alpha_3,q_1)q_1 + (\alpha_3,q_2)q_2 \\
+		\end{cases} \]
+	\end{ceqn}
+	因此，
+	\begin{align*}
+		\boldsymbol{A} &= 
+		\begin{pmatrix}
+			\alpha_1 & \alpha_2 & \alpha_3
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+			q_1 & q_2 & q_3
+		\end{pmatrix}
+		\begin{pmatrix}
+			{\parallel}{\beta_1}{\parallel} & (\alpha_2,q_1) & (\alpha_3,q_1) \\
+			0 & {\parallel}{\beta_2}{\parallel} & (\alpha_2,q_2) \\
+			0 & 0 & {\parallel}{\beta_3}{\parallel} 
+		\end{pmatrix} \\
+		&= 
+		\begin{pmatrix}
+			\frac12 & \frac{1}{2\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+			-\frac12 & \frac{3}{2\sqrt{3}} & 0 \\
+			\frac12 & \frac{1}{2\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+			\frac12 & \frac{1}{2\sqrt{3}} & \frac{2}{\sqrt{6}} 
+		\end{pmatrix}
+		\begin{pmatrix}
+			2 & 1 & -1 \\
+			0 & \sqrt{3} & \frac{\sqrt{3}}{3} \\
+			0 & 0 & \frac{2\sqrt{6}}{3} \\
+		\end{pmatrix}
+		 = 
+		\boldsymbol{QR}
+	\end{align*}
+	其中，
+	\begin{ceqn}
+		\begin{gather*}
+			\boldsymbol{Q} =
+			\begin{pmatrix}
+%				\displaystyle{}
+				\frac12 & \frac{1}{2\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+				-\frac12 & \frac{3}{2\sqrt{3}} & 0 \\
+				\frac12 & \frac{1}{2\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+				\frac12 & \frac{1}{2\sqrt{3}} & \frac{2}{\sqrt{6}} 
+			\end{pmatrix}
+			\quad
+			\boldsymbol{R} =
+			\begin{pmatrix}
+				2 & 1 & -1 \\
+				0 & \sqrt{3} & \frac{\sqrt{3}}{3} \\
+				0 & 0 & \frac{2\sqrt{6}}{3} \\
+			\end{pmatrix}
+		\end{gather*}
+	\end{ceqn}
+%		\dfrac{分子}{分母}形成正常字号元素
+	此即为$\boldsymbol{A}$矩阵的$\boldsymbol{QR}$分解.
+	\clearpage
+	
+	
+	\section*{\kaishu 习题24.}
+	\subsection*{(1) \kaishu {解：}}
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{A} =
+				\begin{pmatrix}
+					1 & 0 \\
+					0 & 1 \\
+					1 & 1
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn} \\
+	\indent 显然矩阵$\boldsymbol{A}$为一个$3 \times 2$的矩阵，且$rank(\boldsymbol{A}) = 2.$ \\
+	\indent 有 $
+		\boldsymbol{A}^H\boldsymbol{A} =
+			\begin{pmatrix}
+				1 & 0 & 1 \\
+				0 & 1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				1 & 0 \\
+				0 & 1 \\
+				1 & 1
+			\end{pmatrix}
+		 = 
+		 	\begin{pmatrix}
+		 		2 & 1 \\
+		 		1 & 2 
+		 	\end{pmatrix}
+		 $ ，\\
+	\indent 令 $
+		 \lvert \lambda \boldsymbol{E} - \boldsymbol{A}^H\boldsymbol{A} \rvert = 0
+		 $ ，即
+		 $
+		 \lvert \lambda \boldsymbol{E} - \boldsymbol{A}^H\boldsymbol{A} \rvert =
+		 \begin{vmatrix}
+		 	\lambda - 2 & -1 \\
+		 	-1 & \lambda - 2
+		 \end{vmatrix}
+		 = 
+		 \boldsymbol{0}
+		 $ ，解得矩阵$\boldsymbol{A}^H\boldsymbol{A}$的特征值$\lambda_1 = 3 , \lambda_2 = 1.$ 则矩阵$\boldsymbol{A}$的非零奇异值为$\sigma_1 = \sqrt{3} , \sigma_2 = 1.$ 记矩阵$\boldsymbol{\Sigma}$为
+		 \begin{ceqn}
+		 	\begin{align*}
+		 		\boldsymbol{\Sigma} =
+		 		\begin{pmatrix}
+		 			\sqrt{3} & 0 \\
+		 			0 & 1 
+		 		\end{pmatrix}
+		 	\end{align*}‎
+		 \end{ceqn} 
+	 \indent 求矩阵$\boldsymbol{A}^H\boldsymbol{A}$对应于特征值$3$和$1$的特征向量：
+		$$
+		\begin{array}{cc}
+			(3\boldsymbol{I} - \boldsymbol{A}^H\boldsymbol{A}) x = 0 \qquad & \qquad (\boldsymbol{I} - \boldsymbol{A}^H\boldsymbol{A}) x = 0 \\
+			\begin{pmatrix}
+				1 & -1 \\
+				-1 & 1
+			\end{pmatrix} x = 0 &
+			\begin{pmatrix}
+				-1 & -1 \\
+				-1 & -1
+			\end{pmatrix} x = 0 \\
+			x_1 = \begin{pmatrix}
+				1 \\ 1
+			\end{pmatrix} &
+			x_2 = \begin{pmatrix}
+				1 \\ -1
+			\end{pmatrix}
+		\end{array}				 	
+			$$
+		\indent 将$x_1,x_2$单位化得
+			$\xi_1 = 
+			\begin{pmatrix}
+				\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+			\end{pmatrix}^T,
+			\xi_2 = 
+			\begin{pmatrix}
+				\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+			\end{pmatrix}^T.
+			$ 记矩阵$\boldsymbol{V}$为
+			\begin{ceqn}
+				\begin{align*}
+					\boldsymbol{V} = 
+					[\xi_1,\xi_2] = 
+					\begin{pmatrix}
+						\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+						\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} 
+					\end{pmatrix}
+				\end{align*}‎
+			\end{ceqn}
+		\indent 取矩阵$\boldsymbol{V}$的前$rank(\boldsymbol{A}) = 2$列为矩阵$\boldsymbol{V}_1$：即
+			$
+			\boldsymbol{V}_1 = \boldsymbol{V} = 
+			\begin{pmatrix}
+				\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+				\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} 
+			\end{pmatrix}.
+			$ \\
+		\indent 令矩阵$\boldsymbol{U}_1 = \boldsymbol{A}\boldsymbol{V}_1\boldsymbol{\Sigma}^{-1} = 
+			\begin{pmatrix}
+				1 & 0 \\
+				0 & 1 \\
+				1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+				\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} 
+			\end{pmatrix}
+			\begin{pmatrix}
+				\frac{1}{\sqrt{3}} & 0 \\
+				0 & 1 
+			\end{pmatrix} = 
+			\begin{pmatrix}
+				\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} \\
+				\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} \\
+				\frac{\sqrt{2}}{\sqrt{3}} & 0
+			\end{pmatrix} , $ \\
+			将$\boldsymbol{U}_1$扩充为一个$m \times m$亦即$3 \times 3$的酉矩阵$\boldsymbol{U}$：
+			\begin{ceqn}
+				\begin{align*}
+					\boldsymbol{U} = 
+					[\boldsymbol{U}_1,\boldsymbol{U}_2] = 
+					\begin{pmatrix}
+						\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & u_{13} \\
+						\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & u_{23} \\
+						\frac{\sqrt{2}}{\sqrt{3}} & 0 & u_{33}
+					\end{pmatrix}
+				\end{align*}‎
+			\end{ceqn}
+			由于矩阵$\boldsymbol{U}$是酉矩阵，其各个列向量应该是单位正交的，故可列出方程：
+				$$	\left\{
+					\begin{array}{c}%有了“&=”符号就需要严谨地在大括号里写等号两边的对齐方式！！！
+						\frac{1}{\sqrt{6}} \cdot u_{13} + \frac{1}{\sqrt{6}} \cdot u_{23} + \frac{\sqrt{2}}{\sqrt{3}} \cdot u_{33} = 0 \\
+						\frac{1}{\sqrt{2}} \cdot u_{13} + (-\frac{1}{\sqrt{2}}) \cdot u_{23} = 0 \\
+						u_{13}^2 + u_{23}^2 + u_{33}^2 = 1
+					\end{array} 
+					\right.
+				$$
+			解得$\boldsymbol{U}_2 = 
+			\begin{pmatrix}
+				u_{13} \\ u_{23} \\ u_{33}
+			\end{pmatrix} = 
+				\begin{pmatrix}
+				\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ -\frac{1}{\sqrt{3}}
+			\end{pmatrix}
+			$，故矩阵$\boldsymbol{U}$为：			
+			\begin{ceqn}
+				\begin{align*}
+					\boldsymbol{U} = %这里“\boldsymbol{U}”如果加了“$_$”会使pdf生成报错
+					\begin{pmatrix}
+						\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \\
+						\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \\
+						\frac{\sqrt{2}}{\sqrt{3}} & 0 & -\frac{1}{\sqrt{3}}
+					\end{pmatrix}
+				\end{align*}
+			\end{ceqn}
+		\indent \textbf{综上所述}，矩阵$\boldsymbol{A}$的奇异值分解为：
+			$$
+			\boldsymbol{A} = \boldsymbol{U} \begin{pmatrix}
+				\boldsymbol{\Sigma} & 0 \\
+				0 & 0
+			\end{pmatrix} \boldsymbol{V}^H = 
+			\begin{pmatrix}
+				\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \\
+				\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \\
+				\frac{\sqrt{2}}{\sqrt{3}} & 0 & -\frac{1}{\sqrt{3}}
+			\end{pmatrix}
+			\begin{pmatrix}
+				\sqrt{3} & 0 \\
+				0 & 1 \\
+				0 & 0
+			\end{pmatrix}
+			\begin{pmatrix}
+				\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+				\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} 
+			\end{pmatrix}.
+			$$
+			\\ \\
+		
+		
+		\subsection*{(3) \kaishu {解：}}
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{A} =
+				\begin{pmatrix}
+					-1 & 0 & 1 \\
+					0 & 1 & 0 \\
+					1 & 0 & -1
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn} \\
+		\indent 显然矩阵$\boldsymbol{A}$为一个$3 \times 3$的矩阵，且$rank(\boldsymbol{A}) = 2.$ \\
+		\indent 有 $
+		\boldsymbol{A}^H\boldsymbol{A} =
+		\begin{pmatrix}
+			-1 & 0 & 1 \\
+			0 & 1 & 0 \\
+			1 & 0 & -1
+		\end{pmatrix}
+		\begin{pmatrix}
+			-1 & 0 & 1 \\
+			0 & 1 & 0 \\
+			1 & 0 & -1
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+			2 & 0 & -2 \\
+			0 & 1 & 0 \\
+			-2 & 0 & 2
+		\end{pmatrix}
+		$ ，\\
+		\indent 令 $
+		\lvert \lambda \boldsymbol{E} - \boldsymbol{A}^H\boldsymbol{A} \rvert = 0
+		$ ，即
+		$
+		\lvert \lambda \boldsymbol{E} - \boldsymbol{A}^H\boldsymbol{A} \rvert =
+		\begin{vmatrix}
+			\lambda - 2 & 0 & 2 \\
+			0 & \lambda - 2 & 0 \\
+			2 & 0 & \lambda-2
+		\end{vmatrix}
+		= 
+		\boldsymbol{0}
+		$ ，解得矩阵$\boldsymbol{A}^H\boldsymbol{A}$的特征值$\lambda_1 = 4 , \lambda_2 = 1 , \lambda_3 = 0.$ 则矩阵$\boldsymbol{A}$的非零奇异值为$\sigma_1 = 2 , \sigma_2 = 1.$ 记矩阵$\boldsymbol{\Sigma}$为
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{\Sigma} =
+				\begin{pmatrix}
+					2 & 0 \\
+					0 & 1 
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn} 
+		\indent 求矩阵$\boldsymbol{A}^H\boldsymbol{A}$对应于特征值$4$、$1$、$0$的特征向量：
+			$$
+			\begin{array}{ccc}
+				(4\boldsymbol{I} - \boldsymbol{A}^H\boldsymbol{A}) x = 0 \qquad & (\boldsymbol{I} - \boldsymbol{A}^H\boldsymbol{A}) x = 0 \qquad & (0\boldsymbol{I} - \boldsymbol{A}^H\boldsymbol{A}) x = 0 \\
+				\begin{pmatrix}
+					2 & 0 & 2 \\
+					0 & 3 & 0 \\
+					2 & 0 & 2 
+				\end{pmatrix} x = 0 &
+				\begin{pmatrix}
+					1 & 0 & 2 \\
+					0 & 0 & 0 \\
+					2 & 0 & -1
+				\end{pmatrix} x = 0 & 
+				\begin{pmatrix}
+					-2 & 0 & 2 \\
+					0 & -1 & 0 \\
+					2 & 0 & -2 
+				\end{pmatrix} x = 0	\\
+				x_1 = \begin{pmatrix}
+					1 \\ 0 \\ -1
+				\end{pmatrix} &
+				x_2 = \begin{pmatrix}
+					0 \\ 1 \\ 0
+				\end{pmatrix} &
+				x_3 = \begin{pmatrix}
+					1 \\ 0 \\ 1
+				\end{pmatrix}
+			\end{array}
+				$$
+		\indent 将$x_1,x_2,x_3$单位化得
+		$\xi_1 = 
+		\begin{pmatrix}
+			\frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}}
+		\end{pmatrix}^T,
+		\xi_2 = 
+		\begin{pmatrix}
+			0 & 1 & 0
+		\end{pmatrix}^T,
+		\xi_3 = 
+		\begin{pmatrix}
+			\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}
+		\end{pmatrix}^T.
+		$ 记矩阵$\boldsymbol{V}$为
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{V} = 
+				[\xi_1,\xi_2,\xi_3] = 
+				\begin{pmatrix}
+					\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} \\
+					0 & 1 & 0 \\
+					-\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} 
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn}
+		\indent 取矩阵$\boldsymbol{V}$的前$rank(\boldsymbol{A}) = 2$列为矩阵$\boldsymbol{V}_1$：即
+		$
+		\boldsymbol{V}_1 = 
+		\begin{pmatrix}
+			\frac{1}{\sqrt{2}} & 0 \\
+			0 & 1 \\
+			-\frac{1}{\sqrt{2}} & 0
+		\end{pmatrix}.
+		$ \\
+		\indent 令矩阵$\boldsymbol{U}_1 = \boldsymbol{A}\boldsymbol{V}_1\boldsymbol{\Sigma}^{-1} = 
+		\begin{pmatrix}
+			-1 & 0 & 1 \\
+			0 & 1 & 0 \\
+			1 & 0 & -1
+		\end{pmatrix}
+		\begin{pmatrix}
+			\frac{1}{\sqrt{2}} & 0 \\
+			0 & 1 \\
+			-\frac{1}{\sqrt{2}} & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			\frac12 & 0 \\
+			0 & 1 
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			-\frac{\sqrt{2}}{2} & 0 \\
+			0 & 1 \\
+			\frac{\sqrt{2}}{2} & 0
+		\end{pmatrix} , $ \\
+		将$\boldsymbol{U}_1$扩充为一个$m \times m$亦即$3 \times 3$的酉矩阵$\boldsymbol{U}$：
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{U} = 
+				[\boldsymbol{U}_1,\boldsymbol{U}_2] = 
+				\begin{pmatrix}
+					-\frac{\sqrt{2}}{2} & 0 & u_{13} \\
+					0 & 1 & u_{23} \\
+					\frac{\sqrt{2}}{2} & 0 & u_{33}
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn}
+		由于矩阵$\boldsymbol{U}$是酉矩阵，其各个列向量应该是单位正交的，故可列出方程：
+		$$	\left\{
+		\begin{array}{c}%有了“&=”符号就需要严谨地在大括号里写等号两边的对齐方式！！！
+			(-\frac{\sqrt{2}}{2}) \cdot u_{13} + 0 \cdot u_{23} + \frac{\sqrt{2}}{2} \cdot u_{33} = 0 \\
+			1 \cdot u_{23} = 0 \\
+			u_{13}^2 + u_{23}^2 + u_{33}^2 = 1
+		\end{array} 
+		\right.
+		$$
+		解得$\boldsymbol{U}_2 = 
+		\begin{pmatrix}
+			u_{13} \\ u_{23} \\ u_{33}
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}
+		\end{pmatrix}
+		$，故矩阵$\boldsymbol{U}$为：			
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{U} = %这里“\boldsymbol{U}”如果加了“$_$”会使pdf生成报错
+				\begin{pmatrix}
+					-\frac{\sqrt{2}}{2} & 0 & \frac{\sqrt{2}}{2} \\
+					0 & 1 & 0 \\
+					\frac{\sqrt{2}}{2} & 0 & \frac{\sqrt{2}}{2}
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		\indent \textbf{综上所述}，矩阵$\boldsymbol{A}$的奇异值分解为：
+		$$
+		\boldsymbol{A} = \boldsymbol{U} \begin{pmatrix}
+			\boldsymbol{\Sigma} & 0 \\
+			0 & 0
+		\end{pmatrix} \boldsymbol{V}^H = 
+		\begin{pmatrix}
+			-\frac{\sqrt{2}}{2} & 0 & \frac{\sqrt{2}}{2} \\
+			0 & 1 & 0 \\
+			\frac{\sqrt{2}}{2} & 0 & \frac{\sqrt{2}}{2}
+		\end{pmatrix}
+		\begin{pmatrix}
+			2 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			\frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}} \\
+			0 & 1 & 0 \\
+			\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} 
+		\end{pmatrix}.
+		$$
+		
+		
+		
+		
+		
+		
+		
+		
+		
+\end{document}

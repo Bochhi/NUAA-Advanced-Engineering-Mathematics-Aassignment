@@ -1,0 +1,992 @@
+\documentclass[12pt,fleqn]{article}
+
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{nccmath}
+\usepackage{amssymb}
+
+
+
+
+\geometry{a4paper,left=1in, right=1in, top=1in, bottom=1in}
+
+
+\title{\heiti 矩阵论第五、六、七、八章作业}
+\author{XXX SZ2305XXX}
+\date{2023年11月07日}
+
+\renewcommand\arraystretch{0.8}
+\renewcommand{\baselinestretch}{1.5}
+\newcommand{\qedsymbol}{\hfill\square}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\section*{\kaishu 第五章-习题11.}
+		\subsection*{\kaishu {证：}}
+		由题意知，$\boldsymbol{A}$,$\boldsymbol{B}$为$n$阶Hermite矩阵,且$\boldsymbol{A}$正定，由书本\textbf{定理5.2.1}可知存在n阶可逆Hermite矩阵$\boldsymbol{S}$使得$\boldsymbol{A}={\boldsymbol{S}}^2$.则
+		\begin{ceqn}
+			\begin{align*}
+			\boldsymbol{A}\boldsymbol{B} &= \boldsymbol{S}^2\boldsymbol{B} \\
+			\boldsymbol{S}^{-1}\boldsymbol{A}\boldsymbol{B}\boldsymbol{S} &= 	\boldsymbol{S}\boldsymbol{B}\boldsymbol{S}  \quad  \text{也是Hermite矩阵}\Bigl(\text{\textbf{5.1.1}Hermite矩阵的性质(5)}\Bigr).
+			\end{align*}‎
+		\end{ceqn}
+		\indent 又由\textbf{定理5.1.3}可知，若$\boldsymbol{SBS}$是Hermint矩阵，则存在酉矩阵$\boldsymbol{U}$使得
+		$$
+		\boldsymbol{U}^H(\boldsymbol{SBS})\boldsymbol{U} = \boldsymbol{\Lambda} = diag(\lambda_1,\lambda_2,\cdots,\lambda_n)
+		$$
+		$\text{其中}\lambda_1,\lambda_2,\cdots,\lambda_n\text{均为实数}.$即
+		$$
+			\boldsymbol{U}^H\boldsymbol{SBSU} = \boldsymbol{\Lambda}
+		$$
+		代$\boldsymbol{S}\boldsymbol{B}\boldsymbol{S} = \boldsymbol{S}^{-1}\boldsymbol{A}\boldsymbol{B}\boldsymbol{S}$入得
+		$$
+			\boldsymbol{U}^H\boldsymbol{S}^{-1}\boldsymbol{ABSU} = \boldsymbol{\Lambda}
+		$$
+		其中$\boldsymbol{U}$为酉矩阵，则有$\boldsymbol{U}^{-1} = \boldsymbol{U}^H$，故上式化为
+		$$
+		\boldsymbol{U}^{-1}\boldsymbol{S}^{-1}\boldsymbol{ABSU} = \boldsymbol{\Lambda}
+		$$
+		$$
+			\boldsymbol{(SU)}^{-1}\boldsymbol{(AB)(SU)} = \boldsymbol{\Lambda}
+		$$
+		记$\boldsymbol{P} = \boldsymbol{SU}$，则有$\boldsymbol{P}^{-1}\boldsymbol{(AB)}\boldsymbol{P} = \boldsymbol{\Lambda}$，即$\boldsymbol{AB}$相似于实对角矩阵$\boldsymbol{\Lambda}$.
+		$\qedsymbol$
+		\\ \\
+	\section*{\kaishu 第五章-习题12.}
+		\subsection*{\kaishu {证：}}
+		由题意知，$\boldsymbol{A}$,$\boldsymbol{B}$为$n$阶Hermite矩阵,且$\boldsymbol{A}$正定，$\boldsymbol{B}$半正定，由书本\textbf{定理5.2.1}可知存在n阶可逆矩阵$\boldsymbol{Q}$使得$\boldsymbol{A}={\boldsymbol{Q}}^H{\boldsymbol{Q}}$.则
+		$$
+			\boldsymbol{AB} = \boldsymbol{Q}^H\boldsymbol{QB}
+		$$
+		因而有
+		$$
+			tr(\boldsymbol{AB}) = tr(\boldsymbol{Q}^H\boldsymbol{QB}) = tr(\boldsymbol{Q}^H\boldsymbol{BQ})
+		$$
+		其中$\boldsymbol{B}$半正定，由\textbf{定理5.2.2}(4)知$\boldsymbol{Q}^H\boldsymbol{BQ}$也为Hermite半正定矩阵，则由\textbf{推论5.2.2}(3)与\textbf{定理5.2.2}(4)得
+		\begin{ceqn}
+			\begin{equation}
+				tr(\boldsymbol{Q}^H\boldsymbol{BQ}) \ge \lambda_i(i = 1,2,\cdots,n) \ge 0 \tag{*}
+			\end{equation}
+		\end{ceqn}
+		\indent 又由题意知，
+		\begin{ceqn}
+			\begin{equation}
+				tr(\boldsymbol{AB}) = tr(\boldsymbol{Q}^H\boldsymbol{BQ}) = 0 \tag{**}
+			\end{equation}
+		\end{ceqn}
+		\indent 对比(*)式与(**)式，当且仅当$\lambda_i = 0 , \text{其中}i = 1,2,\cdots,n.$
+		当且仅当$\boldsymbol{B} = \boldsymbol{0}$. $\qedsymbol$
+		\clearpage
+		
+		
+		
+	\section*{\kaishu 第六章-习题18.}
+		\subsection*{\kaishu {解：}}
+		求幂级数$f(z) = \sum\limits_{i=1}^\infty c_k z^k$的收敛半径$R$：
+		\begin{ceqn}
+			\begin{align*}
+				\lim_{k \to \infty} \vert \frac{c_k}{c_{k+1}} \vert = 
+				\lim_{k \to \infty} \vert \frac{k^2}{(k+1)^2} \vert = 1
+			\end{align*}
+		\end{ceqn}
+		则$R = \lim\limits_{k \to \infty} \vert \frac{c_k}{c_{k+1}} \vert = 1$. \\
+		\indent 求矩阵$\boldsymbol{A} = \begin{pmatrix}
+			1 & 4 \\ -1 & -3
+		\end{pmatrix}$的谱半径$\rho(\boldsymbol{A})$：
+		\begin{ceqn}
+			\begin{gather*}
+				| \lambda \boldsymbol{I} - \boldsymbol{A} | = 0 \\
+				\begin{vmatrix}
+					\lambda-1 & -4 \\ 1 & \lambda+3
+				\end{vmatrix} = \lambda^2 + 2 \lambda + 1 = 0 \\
+				\lambda_1 = \lambda_2 = -1 \\
+				\rho(\boldsymbol{A}) = \max\limits_{1 \le i \le n} |\lambda_i| = 1
+			\end{gather*}
+		\end{ceqn}
+		\indent 对比$R$与$\rho(\boldsymbol{A})$，有$R = \rho(\boldsymbol{A})$，故原矩阵幂级数收敛性无法判断.
+		\clearpage
+		
+		
+		
+	\section*{\kaishu 第七章-习题1.}
+		\subsection*{\kaishu {(1)解：}}
+		$$
+		\boldsymbol{A} = 
+		\begin{pmatrix}
+			2 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1
+		\end{pmatrix}
+		$$
+		注意到$\boldsymbol{A}$为Jordan标准形，有Jordan块
+		$$
+		\begin{array}{cc}
+			\boldsymbol{J_1} = \begin{pmatrix} 2 \end{pmatrix} \quad & \quad
+			\boldsymbol{J_2} = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}
+		\end{array}
+		$$
+		则$\lambda_1 = 2 , \lambda_2 = 1$. \\[12pt]
+		矩阵函数$f(\boldsymbol{A}) = \begin{pmatrix}
+			f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+		\end{pmatrix}$，\\
+		其中$f(\boldsymbol{J_i}) = 
+		\begin{pmatrix}
+			f(\lambda_i) & \dfrac{1}{1!}f'(\lambda_i) & \cdots & \dfrac{1}{(n_i-1)!}f^{(n_i-1)}(\lambda_i) \\
+			 & f(\lambda_i) & \ddots & \vdots \\
+			  & & \ddots & \dfrac{1}{1!}f'(\lambda_i) \\
+			   & & & f(\lambda_i)
+		\end{pmatrix}(i = 1,2; \  n_i \text{为}\boldsymbol{J_i}\text{的阶数})$ \\
+		则有
+		\begin{ceqn}
+			\begin{gather*}
+				f(\boldsymbol{J_1}) = \begin{pmatrix} f(\lambda_1) \end{pmatrix} \\
+				f(\boldsymbol{J_2}) = \begin{pmatrix} f(\lambda_2) & f'(\lambda_2) \\
+				 & f(\lambda_2)
+				\end{pmatrix} 
+			\end{gather*}
+		\end{ceqn}
+		$f(x) = e^x$时，$f'(x) = e^x$ ，$f(\lambda_1) = e^2$，$f(\lambda_2) = e$，$f'(\lambda_2) = e$
+		$$f(\boldsymbol{A}) = 
+		\begin{pmatrix}
+			e^2 &  & \\
+			 & e & e \\
+			 & & e
+		\end{pmatrix}
+		$$ 
+		$f(x) = e^{tx}$时，$f'(x) = te^{tx}$ ，$f(\lambda_1) = e^{2t}$，$f(\lambda_2) = e^t$，$f'(\lambda_2) = te^t$
+		$$f(\boldsymbol{A}) = 
+		\begin{pmatrix}
+			e^{2t} &  & \\
+			& e^t & te^t \\
+			& & e^t
+		\end{pmatrix}
+		$$
+		$f(x) = sin{tx}$时，$f'(x) = tcos{tx}$ ，$f(\lambda_1) = sin2t$，$f(\lambda_2) = sint$，$f'(\lambda_2) = tcost$
+		$$f(\boldsymbol{A}) = 
+		\begin{pmatrix}
+			sin{2t} &  & \\
+			& sint & tcost \\
+			& & sint
+		\end{pmatrix}
+		$$
+		\\
+		
+		
+		
+%		\subsection*{\kaishu {(2)解：}}
+%		$$
+%		\boldsymbol{A} = 
+%		\begin{pmatrix}
+%			2 & 2 & 1 \\ -2 & 6 & 1 \\ 0 & 0 & 4
+%		\end{pmatrix}
+%		$$
+%		有
+%		\begin{gather*}
+%			\lambda \boldsymbol{I} - \boldsymbol{A} = 
+%			\begin{pmatrix}
+%				\lambda-2 & -2 & -1 \\
+%				2 & \lambda-6 & -1 \\
+%				0 & 0 & \lambda-4
+%			\end{pmatrix}
+%			\to
+%			\begin{pmatrix}
+%				-1 & \lambda-2 & -2 \\
+%				-1 & 2 & \lambda-6 \\
+%				\lambda-4 & 0 & 0
+%			\end{pmatrix}	\\
+%			\to
+%			\begin{pmatrix}
+%				-1 & \lambda-2 & -2 \\
+%				0 & -\lambda+4 & \lambda-4 \\
+%				0 & (\lambda-2)(\lambda-4) & -2(\lambda-4)
+%			\end{pmatrix}
+%			\to
+%			\begin{pmatrix}
+%				1 & 0 & 0 \\
+%				0 & \lambda-4 & -(\lambda-4) \\
+%				0 & (\lambda-2)(\lambda-4) & -2(\lambda-4)
+%			\end{pmatrix}	\\
+%			\to
+%			\begin{pmatrix}
+%				1 &  &  \\
+%				& \lambda-4 &  \\
+%				&  (\lambda-2)(\lambda-4) & (\lambda-4)^2
+%			\end{pmatrix}
+%			\to
+%			\begin{pmatrix}
+%				1 &  &  \\
+%				& \lambda-4 &  \\
+%				& & (\lambda-4)^2
+%			\end{pmatrix}
+%		\end{gather*}
+%		\indent 则$\boldsymbol{A}$的初等因子为$\lambda-4$，$(\lambda-4)^2$，故$\boldsymbol{A}$的$Jordan$标准形为\par
+%		\begin{ceqn}
+%			\begin{align*}
+%				\boldsymbol{J} =
+%				\begin{pmatrix}
+%					4 & 0 & 0 \\
+%					0 & 4 & 1 \\
+%					0 & 0 & 4
+%				\end{pmatrix} ‎
+%			\end{align*}‎
+%		\end{ceqn}
+%		其中Jordan块
+%		$$
+%		\begin{array}{cc}
+%			\boldsymbol{J_1} = \begin{pmatrix} 4 \end{pmatrix} \quad & \quad
+%			\boldsymbol{J_2} = \begin{pmatrix} 4 & 1 \\ 0 & 4 \end{pmatrix}
+%		\end{array}
+%		$$
+%		则$\lambda_1 = \lambda_2 = 4$. \\[12pt]
+%		\indent 求变换矩阵$\boldsymbol{P}$使得$\boldsymbol{P}^{-1}\boldsymbol{AP}=\boldsymbol{J}$，即求$\boldsymbol{P}=(p_1,p_2,p_3)$满足$\boldsymbol{AP}=\boldsymbol{PJ}$，带入$\boldsymbol{A}$、$\boldsymbol{P}$、$\boldsymbol{J}$得：
+%		\begin{ceqn}
+%			\begin{align*}
+%				(\boldsymbol{A}p_1,\boldsymbol{A}p_2,\boldsymbol{A}p_3) = (p_1,p_2,p_3)
+%				\begin{pmatrix}
+%					4 & 0 & 0  \\
+%					0 & 4 & 1  \\
+%					0 & 0 & 4  
+%				\end{pmatrix} ‎
+%			\end{align*}‎
+%		\end{ceqn}
+%		\indent 比较上式两边得
+%		\begin{ceqn}
+%			\begin{align*}
+%				\begin{cases}
+%					\boldsymbol{A}p_1 = 4p_1,\\
+%					\boldsymbol{A}p_2 = 4p_2,\\
+%					\boldsymbol{A}p_3 = p_2 + 4p_3.
+%				\end{cases} 
+%			\end{align*}‎
+%		\end{ceqn}
+%		由此可见，$p_1$，$p_2$是$\boldsymbol{A}$的对应于特征值$4$的两个线性无关的特征向量.\par
+%		\indent 从方程组
+%		\begin{ceqn}
+%			\begin{align*}
+%				(\boldsymbol{A} - 4\boldsymbol{I}) x = 0 
+%			\end{align*}‎
+%		\end{ceqn}
+%		可求得两个线性无关的特征向量$\xi = \begin{pmatrix}
+%			1 \\ 0 \\ 2
+%		\end{pmatrix}$，$\eta = \begin{pmatrix}
+%			0 \\ 1 \\ -2
+%		\end{pmatrix}$. \\
+%		\indent 取$p_1 = \xi$，$p_2 = k_1\xi + k_2\eta$，其满足方程 $\boldsymbol{A}p_3 = p_2 + 4p_3$ 有解，记$p_3 = (x_1,x_2,x_3)^T$，即
+%		\begin{ceqn}
+%			\begin{align*}
+%				\begin{pmatrix}
+%					-2 & 2 & 1 \\
+%					-2 & 2 & 1 \\
+%					0 & 0 & 0
+%				\end{pmatrix}
+%				\begin{pmatrix}
+%					x_1 \\ x_2 \\ x_3 
+%				\end{pmatrix}
+%				=
+%				\begin{pmatrix}
+%					k_1 \\ k_2 \\ 2k_1 - k_2 
+%				\end{pmatrix}
+%			\end{align*}‎
+%		\end{ceqn}
+%		有解.容易看出，当$k_1 = k_2$时方程有解，且其解为
+%		\begin{ceqn}
+%			\begin{align*}
+%				-2x_1 + 2x_2 + x_3 = k_1 
+%			\end{align*}‎
+%		\end{ceqn}
+%		其中$k_1$为任意非零常数.取$k_1=k_2=1$，可得$p_1 = \xi = \begin{pmatrix}
+%			1 \\ 0 \\ 2
+%		\end{pmatrix}$，$p_2 = k_1\xi + k_2\eta = \begin{pmatrix}
+%			1 \\ 1 \\ 0
+%		\end{pmatrix}$，取一特解$p_3 = \begin{pmatrix}
+%			1 \\ 1 \\ 1
+%		\end{pmatrix}$，则有$\boldsymbol{P} = \begin{pmatrix}
+%			1 & 1 & 1 \\ 0 & 1 & 1 \\ 2 & 0 & 1
+%		\end{pmatrix}$使得$\boldsymbol{P}^{-1}\boldsymbol{AP} = \boldsymbol{J} = 
+%		\begin{pmatrix}
+%			4 & 0 & 0 \\
+%			0 & 4 & 1 \\
+%			0 & 0 & 4
+%		\end{pmatrix}$.\\[12pt]
+%		\indent 矩阵函数$f(\boldsymbol{A}) = \boldsymbol{P}^{-1}
+%		\begin{pmatrix}
+%			f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+%		\end{pmatrix}
+%		\boldsymbol{P}$，\\[6pt]			%这个[6pt]是在普通行距的基础上加的
+%		其中$\boldsymbol{P} = \begin{pmatrix}
+%			1 & 1 & 1 \\ 0 & 1 & 1 \\ 2 & 0 & 1
+%		\end{pmatrix} \text{，可求得}
+%		\boldsymbol{P}^{-1} = \begin{pmatrix}
+%			1 & -1 & 0 \\ 2 & -1 & -1 \\ -2 & 2 & 1
+%		\end{pmatrix} \text{，}\\
+%		f(\boldsymbol{J_i}) = 
+%		\begin{pmatrix}
+%			f(\lambda_i) & \dfrac{1}{1!}f'(\lambda_i) & \cdots & \dfrac{1}{(n_i-1)!}f^{(n_i-1)}(\lambda_i) \\
+%			& f(\lambda_i) & \ddots & \vdots \\
+%			& & \ddots & \dfrac{1}{1!}f'(\lambda_i) \\
+%			& & & f(\lambda_i)
+%		\end{pmatrix}(i = 1,2; \  n_i \text{为}\boldsymbol{J_i}\text{的阶数})$ \\
+%		则有
+%		\begin{ceqn}
+%			\begin{gather*}
+%				f(\boldsymbol{J_1}) = \begin{pmatrix} f(\lambda_1) \end{pmatrix} \\
+%				f(\boldsymbol{J_2}) = \begin{pmatrix} f(\lambda_2) & f'(\lambda_2) \\
+%					& f(\lambda_2)
+%				\end{pmatrix} 
+%			\end{gather*}
+%		\end{ceqn}
+%		$f(x) = e^x$时，$f'(x) = e^x$ ，$f(\lambda_1) = e^4$，$f(\lambda_2) = e^4$，$f'(\lambda_2) = e^4$
+%		\begin{ceqn}
+%			\begin{align*}
+%			f(\boldsymbol{A}) &= 
+%			\boldsymbol{P}^{-1}
+%			\begin{pmatrix}
+%				f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+%			\end{pmatrix}
+%			\boldsymbol{P}
+%			=
+%			\begin{pmatrix}
+%				1 & -1 & 0 \\ 2 & -1 & -1 \\ -2 & 2 & 1
+%			\end{pmatrix}
+%			\begin{pmatrix}
+%			e^4 &  & \\
+%			& e^4 & e^4 \\
+%			& & e^4
+%			\end{pmatrix}
+%			\begin{pmatrix}
+%				1 & 1 & 1 \\ 0 & 1 & 1 \\ 2 & 0 & 1
+%			\end{pmatrix} \\
+%			&=
+%			\begin{pmatrix}
+%				e^4 & -e^4 & -e^4 \\
+%				2e^4 & -e^4 & -2e^4 \\
+%				-2e^4 & 2e^4 & 3e^4
+%			\end{pmatrix}
+%			\end{align*}
+%		\end{ceqn}
+%		$f(x) = e^{tx}$时，$f'(x) = te^{tx}$ ，$f(\lambda_1) = e^{4t}$，$f(\lambda_2) = e^{4t}$，$f'(\lambda_2) = te^{4t}$
+%		$$f(\boldsymbol{A}) = 
+%		\begin{pmatrix}
+%			e^{4t} &  & \\
+%			& e^{4t} & te^{4t} \\
+%			& & e^{4t}
+%		\end{pmatrix}
+%		$$
+%		$f(x) = sin{tx}$时，$f'(x) = tcos{tx}$ ，$f(\lambda_1) = sin4t$，$f(\lambda_2) = sin4t$，$f'(\lambda_2) = tcos4t$
+%		$$f(\boldsymbol{A}) = 
+%		\begin{pmatrix}
+%			sin4t &  & \\
+%			& sin4t & tcos4t \\
+%			& & sin4t
+%		\end{pmatrix}
+%		$$
+%		\\
+		
+		
+		
+		\subsection*{\kaishu {(4)解：}}
+		$$
+		\boldsymbol{A} = 
+		\begin{pmatrix}
+			2 & 0 & 0 \\ 1 & 1 & 1 \\ 1 & -1 & 3
+		\end{pmatrix}
+		$$
+		有
+		\begin{gather*}
+			\lambda \boldsymbol{I} - \boldsymbol{A} = 
+			\begin{pmatrix}
+				\lambda-2 & 0 & 0 \\
+				-1 & \lambda-1 & -1 \\
+				-1 & 1 & \lambda-3
+			\end{pmatrix}
+			\to
+			\begin{pmatrix}
+				1 & -1 & -\lambda+3 \\
+				-1 & \lambda-1 & -1 \\
+				\lambda-2 & 0 & 0
+			\end{pmatrix}	\\
+			\to
+			\begin{pmatrix}
+				-1 & -1 & -\lambda+3 \\
+				0 & \lambda-2 & -\lambda+2 \\
+				0 & \lambda-2 & (\lambda-2)(\lambda-3)
+			\end{pmatrix}
+			\to
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & \lambda-2 & -(\lambda-2) \\
+				0 & \lambda-2 & (\lambda-2)(\lambda-3)
+			\end{pmatrix}	\\
+			\to
+			\begin{pmatrix}
+				1 &  &  \\
+				& \lambda-2 &  \\
+				&  & (\lambda-2)^2
+			\end{pmatrix}
+		\end{gather*}
+		\indent 则$\boldsymbol{A}$的初等因子为$\lambda-2$，$(\lambda-2)^2$，故$\boldsymbol{A}$的$Jordan$标准形为\par
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{J} =
+				\begin{pmatrix}
+					2 & 0 & 0 \\
+					0 & 2 & 1 \\
+					0 & 0 & 2
+				\end{pmatrix} ‎
+			\end{align*}‎
+		\end{ceqn}
+		其中Jordan块
+		$$
+		\begin{array}{cc}
+			\boldsymbol{J_1} = \begin{pmatrix} 2 \end{pmatrix} \quad & \quad
+			\boldsymbol{J_2} = \begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix}
+		\end{array}
+		$$
+		则$\lambda_1 = \lambda_2 = 2$. \\[12pt]
+		\indent 求变换矩阵$\boldsymbol{P}$使得$\boldsymbol{P}^{-1}\boldsymbol{AP}=\boldsymbol{J}$，即求$\boldsymbol{P}=(p_1,p_2,p_3)$满足$\boldsymbol{AP}=\boldsymbol{PJ}$，带入$\boldsymbol{A}$、$\boldsymbol{P}$、$\boldsymbol{J}$得：
+		\begin{ceqn}
+			\begin{align*}
+				(\boldsymbol{A}p_1,\boldsymbol{A}p_2,\boldsymbol{A}p_3) = (p_1,p_2,p_3)
+				\begin{pmatrix}
+					2 & 0 & 0  \\
+					0 & 2 & 1  \\
+					0 & 0 & 2  
+				\end{pmatrix} ‎
+			\end{align*}‎
+		\end{ceqn}
+		\indent 比较上式两边得
+		\begin{ceqn}
+			\begin{align*}
+				\begin{cases}
+					\boldsymbol{A}p_1 = 2p_1,\\
+					\boldsymbol{A}p_2 = 2p_2,\\
+					\boldsymbol{A}p_3 = p_2 + 2p_3.
+				\end{cases} 
+			\end{align*}‎
+		\end{ceqn}
+		由此可见，$p_1$，$p_2$是$\boldsymbol{A}$的对应于特征值$2$的两个线性无关的特征向量.\par
+		\indent 从方程组
+		\begin{ceqn}
+			\begin{align*}
+				(\boldsymbol{A} - 2\boldsymbol{I}) x = 0 
+			\end{align*}‎
+		\end{ceqn}
+		可求得两个线性无关的特征向量$\xi = \begin{pmatrix}
+			1 \\ 0 \\ -1
+		\end{pmatrix}$，$\eta = \begin{pmatrix}
+			0 \\ 1 \\ 1
+		\end{pmatrix}$. \\
+		\indent 取$p_1 = \xi$，$p_2 = k_1\xi + k_2\eta$，其满足方程 $\boldsymbol{A}p_3 = p_2 + 2p_3$ 有解，记$p_3 = (x_1,x_2,x_3)^T$，即
+		\begin{ceqn}
+			\begin{align*}
+				\begin{pmatrix}
+					0 & 0 & 0 \\
+					-1 & 1 & -1 \\
+					-1 & 1 & -1
+				\end{pmatrix}
+				\begin{pmatrix}
+					x_1 \\ x_2 \\ x_3 
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					k_1 \\ k_2 \\ -k_1 + k_2 
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn}
+		有解.容易看出，当$k_1 =0$时方程有解，且其解为
+		\begin{ceqn}
+			\begin{align*}
+				-2x_1 + 2x_2 + x_3 = k_2 
+			\end{align*}‎
+		\end{ceqn}
+		其中$k_2$为任意非零常数.取$k_2=1$，可得$p_1 = \xi = \begin{pmatrix}
+			1 \\ 0 \\ -1
+		\end{pmatrix}$，$p_2 = k_1\xi + k_2\eta = \begin{pmatrix}
+			0 \\ 1 \\ 1
+		\end{pmatrix}$，取一特解$p_3 = \begin{pmatrix}
+			0 \\ -1 \\ 0
+		\end{pmatrix}$，则有$\boldsymbol{P} = \begin{pmatrix}
+			1 & 0 & 0 \\ 0 & 1 & -1 \\ -1 & 1 & 0
+		\end{pmatrix}$使得$\boldsymbol{P}^{-1}\boldsymbol{AP} = \boldsymbol{J} = 
+		\begin{pmatrix}
+			2 & 0 & 0 \\
+			0 & 2 & 1 \\
+			0 & 0 & 2
+		\end{pmatrix}$.\\[12pt]
+		\indent 矩阵函数$f(\boldsymbol{A}) = \boldsymbol{P}
+		\begin{pmatrix}
+			f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+		\end{pmatrix}
+		\boldsymbol{P}^{-1}$，\\[6pt]			%这个[6pt]是在普通行距的基础上加的
+		其中$\boldsymbol{P} = \begin{pmatrix}
+			1 & 0 & 0 \\ 0 & 1 & -1 \\ -1 & 1 & 0
+		\end{pmatrix} \text{，可求得}
+		\boldsymbol{P}^{-1} = \begin{pmatrix}
+			1 & 0 & 0 \\ 1 & 0 & 1 \\ 1 & -1 & 1
+		\end{pmatrix} \text{，}\\
+		f(\boldsymbol{J_i}) = 
+		\begin{pmatrix}
+			f(\lambda_i) & \dfrac{1}{1!}f'(\lambda_i) & \cdots & \dfrac{1}{(n_i-1)!}f^{(n_i-1)}(\lambda_i) \\
+			& f(\lambda_i) & \ddots & \vdots \\
+			& & \ddots & \dfrac{1}{1!}f'(\lambda_i) \\
+			& & & f(\lambda_i)
+		\end{pmatrix}(i = 1,2; \  n_i \text{为}\boldsymbol{J_i}\text{的阶数})$ \\
+		则有
+		\begin{ceqn}
+			\begin{gather*}
+				f(\boldsymbol{J_1}) = \begin{pmatrix} f(\lambda_1) \end{pmatrix} \\
+				f(\boldsymbol{J_2}) = \begin{pmatrix} f(\lambda_2) & f'(\lambda_2) \\
+					& f(\lambda_2)
+				\end{pmatrix} 
+			\end{gather*}
+		\end{ceqn}
+		$f(x) = e^x$时，$f'(x) = e^x$ ，$f(\lambda_1) = e^4$，$f(\lambda_2) = e^4$，$f'(\lambda_2) = e^4$
+		\begin{ceqn}
+			\begin{align*}
+				f(\boldsymbol{A}) &= 
+				\boldsymbol{P}
+				\begin{pmatrix}
+					f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+				\end{pmatrix}
+				\boldsymbol{P}^{-1}
+				=
+				\begin{pmatrix}
+					1 & 0 & 0 \\ 0 & 1 & -1 \\ -1 & 1 & 0
+				\end{pmatrix}
+				\begin{pmatrix}
+					e^2 &  & \\
+					& e^2 & e^2 \\
+					& & e^2
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 0 & 0 \\ 1 & 0 & 1 \\ 1 & -1 & 1
+				\end{pmatrix} \\
+				&=
+				\begin{pmatrix}
+					e^2 & 0 & 0 \\
+					e^2 & 0 & e^2 \\
+					e^2 & -e^2 & 2e^2
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		$f(x) = e^{tx}$时，$f'(x) = te^{tx}$ ，$f(\lambda_1) = e^{2t}$，$f(\lambda_2) = e^{2t}$，$f'(\lambda_2) = te^{2t}$
+		\begin{ceqn}
+			\begin{align*}
+				f(\boldsymbol{A}) &= 
+				\boldsymbol{P}
+				\begin{pmatrix}
+					f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+				\end{pmatrix}
+				\boldsymbol{P}^{-1}
+				=
+				\begin{pmatrix}
+					1 & 0 & 0 \\ 1 & 0 & 1 \\ 1 & -1 & 1
+				\end{pmatrix}
+				\begin{pmatrix}
+					e^{2t} &  & \\
+					& e^{2t} & te^{2t} \\
+					& & e^{2t}
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 0 & 0 \\ 0 & 1 & -1 \\ -1 & 1 & 0
+				\end{pmatrix} \\
+				&=
+				\begin{pmatrix}
+					e^{2t} & 0 & 0 \\
+					te^{2t} & (1-t)e^{2t} & te^{2t} \\
+					te^{2t} & -te^{2t} & (1+t)e^{2t}
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		$f(x) = sin{tx}$时，$f'(x) = tcos{tx}$ ，$f(\lambda_1) = sin2t$，$f(\lambda_2) = sin2t$，$f'(\lambda_2) = tcos2t$
+		\begin{ceqn}
+			\begin{align*}
+				f(\boldsymbol{A}) &= 
+				\boldsymbol{P}
+				\begin{pmatrix}
+					f(\boldsymbol{J_1}) & \\ & f(\boldsymbol{J_2})
+				\end{pmatrix}
+				\boldsymbol{P}^{-1}
+				=
+				\begin{pmatrix}
+					1 & 0 & 0 \\ 1 & 0 & 1 \\ 1 & -1 & 1
+				\end{pmatrix}
+				\begin{pmatrix}
+					sin2t &  & \\
+					& sin2t & tcos2t \\
+					& & sin2t
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 0 & 0 \\ 0 & 1 & -1 \\ -1 & 1 & 0
+				\end{pmatrix} \\
+				&=
+				\begin{pmatrix}
+					sin2t & 0 & 0 \\
+					tcos2t & sin2t-tcos2t & tcos2t \\
+					tcos2t & -tcos2t & sin2t+tcos2t
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		\clearpage
+		
+		
+		
+	\section*{\kaishu 第八章-习题15.}
+		\subsection*{\kaishu {(1)解：}}
+		$\text{原方程组的系数矩阵}\ \boldsymbol{A} = 
+		\begin{pmatrix}
+			1 & 2 & 3 & -1 \\
+			3 & 2 & 1 & -1 \\
+			2 & 3 & 1 & 1
+		\end{pmatrix}
+		\text{，常数项矩阵}\ b = 
+		\begin{pmatrix}
+			1 \\ 1 \\ 1
+		\end{pmatrix}$. \\
+		取$\boldsymbol{L_1} = 
+		\begin{pmatrix}
+			1 & & \\
+			-3 & 1 & 1 \\ 
+			-2 & & 1
+		\end{pmatrix}$，
+		有$\boldsymbol{L_1}\boldsymbol{A} = 
+		\begin{pmatrix}
+			1 & 2 & 3 & -1 \\
+			0 & -4 & -8 & 2 \\
+			0 & -1 & -5 & 3
+		\end{pmatrix} =
+		\boldsymbol{A}^{(1)}$.
+		显然$\boldsymbol{A}$为行满秩矩阵. 故
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{A}^{+} = \boldsymbol{A}^T(\boldsymbol{A}\boldsymbol{A}^T)^{-1} &= 
+				\begin{pmatrix}
+					1 & 3 & 2 \\
+					2 & 2 & 3 \\
+					3 & 1 & 1 \\
+					-1 & -1 & 1
+				\end{pmatrix}
+				{\left[
+				\begin{pmatrix}
+					1 & 2 & 3 & -1 \\
+					3 & 2 & 1 & -1 \\
+					2 & 3 & 1 & 1
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 3 & 2 \\
+					2 & 2 & 3 \\
+					3 & 1 & 1 \\
+					-1 & -1 & 1
+				\end{pmatrix}
+				\right]}^{-1}  \\
+				&= \dfrac{1}{270}
+				\begin{pmatrix}
+					-45 & 95 & -10 \\
+					9 & -25 & 68 \\
+					90 & -40 & -10 \\
+					-27 & -75 & 96 
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		有$\boldsymbol{A}\boldsymbol{A}^{+} = 
+		\begin{pmatrix}
+			1 & 2 & 3 & -1 \\
+			3 & 2 & 1 & -1 \\
+			2 & 3 & 1 & 1
+		\end{pmatrix}
+		\times
+		\dfrac{1}{270}
+		\begin{pmatrix}
+			-45 & 95 & -10 \\
+			9 & -25 & 68 \\
+			90 & -40 & -10 \\
+			-27 & -75 & 96 
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}$ \\[8pt]
+		$\boldsymbol{A}\boldsymbol{A}^{+}b = b$，故原方程组相容，其通解为：
+		\begin{ceqn}
+			\begin{align*}
+				x &= \boldsymbol{A}^{+}b + (\boldsymbol{I} - \boldsymbol{A}^{+}\boldsymbol{A})y \\
+				&= \dfrac{1}{270}
+				\begin{pmatrix}
+					-45 & 95 & -10 \\
+					9 & -25 & 68 \\
+					90 & -40 & -10 \\
+					-27 & -75 & 96 
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 \\ 1 \\ 1
+				\end{pmatrix}
+				+
+				\left[
+				\begin{pmatrix}
+					1 & & & \\
+					 & 1 & & \\
+					 & & 1 & \\
+					 & & & 1
+				\end{pmatrix}
+				-
+				\dfrac{1}{270}
+				\begin{pmatrix}
+					-45 & 95 & -10 \\
+					9 & -25 & 68 \\
+					90 & -40 & -10 \\
+					-27 & -75 & 96 
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 2 & 3 & -1 \\
+					3 & 2 & 1 & -1 \\
+					2 & 3 & 1 & 1
+				\end{pmatrix}
+				\right] y \\
+				&=
+				\frac{1}{270}
+				\begin{pmatrix}
+					40 \\ 52 \\ 40 \\ -6
+				\end{pmatrix}
+				+
+				\left[
+				\begin{pmatrix}
+					1 & & & \\
+					& 1 & & \\
+					& & 1 & \\
+					& & & 1
+				\end{pmatrix}
+				-
+				\dfrac{1}{270}
+				\begin{pmatrix}
+					220 & 70 & -50 & -60 \\
+					70 & 172 & 70 & 84 \\
+					-50 & 70 & 220 & -60 \\
+					-60 & 84 & -60 & 198
+				\end{pmatrix}
+				\right] y \\
+				&= 
+				\frac{1}{270}
+				\begin{pmatrix}
+					40 \\ 52 \\ 40 \\ -6
+				\end{pmatrix}
+				+
+				\frac{1}{270}
+				\begin{pmatrix}
+					50 & -70 & 50 & 60 \\
+					-70 & 98 & -70 & -84 \\
+					50 & -70 & 50 & 60 \\
+					60 & -84 & 60 & 72
+				\end{pmatrix} y
+				\text{，其中}y\in\mathbb{R}
+			 \end{align*}
+		 \end{ceqn}
+		其极小范数解为：
+		\begin{ceqn}
+			\begin{align*}
+				x = \boldsymbol{A}^{+}b 
+				= \frac{1}{270}
+				\begin{pmatrix}
+					40 \\ 52 \\ 40 \\ -6
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		\\\\
+		
+		
+		\subsection*{\kaishu {(2)解：}}
+		$\text{原方程组的系数矩阵}\ \boldsymbol{A} = 
+		\begin{pmatrix}
+			1 & 1 & 0 \\
+			1 & 0 & 1 \\
+			-1 & 0 & 0 \\
+			 1 & 1 & 1
+		\end{pmatrix}
+		\text{，常数项矩阵}\ b = 
+		\begin{pmatrix}
+			0 \\ 0 \\ 1 \\ 2
+		\end{pmatrix}$. \\
+		取$\boldsymbol{L_1} = 
+		\begin{pmatrix}
+			1 & & & \\
+			-1 & 1 & & \\ 
+			1 & & 1 & \\
+			-1 & & & 1
+		\end{pmatrix}$，
+		有$\boldsymbol{L_1}\boldsymbol{A} = 
+		\begin{pmatrix}
+			1 & 1 & 0 \\
+			0 & -1 & 1 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix} =
+		\boldsymbol{A}^{(1)}$.\\
+		取$\boldsymbol{L_2} = 
+		\begin{pmatrix}
+			1 & & & \\
+			 & 1 & & \\ 
+			 & 1 & 1 & \\
+			 & & & 1
+		\end{pmatrix}$，
+		有$\boldsymbol{L_2}\boldsymbol{L_1}\boldsymbol{A}^{(1)} = 
+		\begin{pmatrix}
+			1 & 1 & 0 \\
+			0 & -1 & 1 \\
+			0 & 0 & 1 \\
+			0 & 0 & 1
+		\end{pmatrix} =
+		\boldsymbol{A}^{(2)}$.\\
+		取$\boldsymbol{L_3} = 
+		\begin{pmatrix}
+			1 & & & \\
+			 & 1 & & \\ 
+			 & 1 & 1 & \\
+			 & & -1 & 1
+		\end{pmatrix}$，
+		有$\boldsymbol{L_3}\boldsymbol{L_2}\boldsymbol{L_1}\boldsymbol{A}^{(1)} = 
+		\begin{pmatrix}
+			1 & 1 & 0 \\
+			0 & -1 & 1 \\
+			0 & 0 & 1 \\
+			0 & 0 & 0
+		\end{pmatrix} =
+		\boldsymbol{A}^{(3)}$.\\[8pt]
+		显然$\boldsymbol{A}$为列满秩矩阵. 故
+		\begin{ceqn}
+			\begin{align*}
+				\boldsymbol{A}^{+} = (\boldsymbol{A}^T\boldsymbol{A})^{-1}\boldsymbol{A}^T &= 
+				{\left[
+					\begin{pmatrix}
+						1 & 1 & -1 & 1 \\
+						1 & 0 & 0 & 1 \\
+						0 & 1 & 0 & 1
+					\end{pmatrix}
+					\begin{pmatrix}
+						1 & 1 & 0 \\
+						1 & 0 & 1 \\
+						-1 & 0 & 0 \\
+						1 & 1 & 1
+					\end{pmatrix}
+					\right]}^{-1}
+					\begin{pmatrix}
+						1 & 1 & -1 & 1 \\
+						1 & 0 & 0 & 1 \\
+						0 & 1 & 0 & 1
+					\end{pmatrix}  \\
+				&= \dfrac{1}{4}
+				\begin{pmatrix}
+					1 & 1 & -3 & -1 \\
+					2 & -2 & 2 & 2 \\
+					-2 & 2 & 2 & 2 
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		有$\boldsymbol{A}\boldsymbol{A}^{+} = 
+		\begin{pmatrix}
+			1 & 1 & 0 \\
+			1 & 0 & 1 \\
+			-1 & 0 & 0 \\
+			1 & 1 & 1
+		\end{pmatrix}
+		\times
+		\dfrac{1}{4}
+		\begin{pmatrix}
+			1 & 1 & -3 & -1 \\
+			2 & -2 & 2 & 2 \\
+			-2 & 2 & 2 & 2
+		\end{pmatrix} = 
+		\dfrac{1}{4}
+		\begin{pmatrix}
+			3 & -1 & -1 & 1 \\
+			-1 & 3 & -1 & 1 \\
+			-1 & -1 & 3 & 1 \\
+			1 & 1 & 1 & 3
+		\end{pmatrix}$ \\[8pt]
+		$\boldsymbol{A}\boldsymbol{A}^{+}b = 
+		\dfrac{1}{4}
+		\begin{pmatrix}
+			1 \\ 1 \\ 5 \\ 7
+		\end{pmatrix}
+		\ne b = \begin{pmatrix}
+			0 \\ 0 \\ 1 \\ 2
+		\end{pmatrix}$，故原方程组不相容，其最小二乘通解为：
+		\begin{ceqn}
+			\begin{align*}
+				x &= \boldsymbol{A}^{+}b + (\boldsymbol{I} - \boldsymbol{A}^{+}\boldsymbol{A})y \\
+				&= \dfrac{1}{4}
+				\begin{pmatrix}
+					1 & 1 & -3 & -1 \\
+					2 & -2 & 2 & 2 \\
+					-2 & 2 & 2 & 2
+				\end{pmatrix}
+				\begin{pmatrix}
+					0 \\ 0 \\ 1 \\ 2
+				\end{pmatrix}
+				+
+				\left[
+				\begin{pmatrix}
+					1 & & \\
+					& 1 & \\
+					& & 1 
+				\end{pmatrix}
+				-
+				\dfrac{1}{4}
+				\begin{pmatrix}
+					1 & 1 & -3 & -1 \\
+					2 & -2 & 2 & 2 \\
+					-2 & 2 & 2 & 2
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & 1 & 0 \\
+					1 & 0 & 1 \\
+					-1 & 0 & 0 \\
+					1 & 1 & 1
+				\end{pmatrix}
+				\right] y \\
+				&=
+				\frac{1}{4}
+				\begin{pmatrix}
+					-5 \\ 6 \\ 6
+				\end{pmatrix}
+				+
+				\boldsymbol{0} \cdot y = 
+				\frac{1}{4}
+				\begin{pmatrix}
+					-5 \\ 6 \\ 6
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+		其极小范数解为：
+		\begin{ceqn}
+			\begin{align*}
+				x = \boldsymbol{A}^{+}b 
+				= \frac{1}{4}
+				\begin{pmatrix}
+					-5 \\ 6 \\ 6
+				\end{pmatrix}
+			\end{align*}
+		\end{ceqn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,825 @@
+\documentclass[12pt,fleqn]{article}
+%\usepackage[fleqn]{amsmath}默认是左对齐，而且是全局设置，所以之后对于段内公式即使加入\centering或者是都无法做到使公式居中.
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{nccmath}
+\usepackage{amssymb}
+\usepackage{color}
+
+%\usepackage{datetime}
+%\newdate{date}{22}{07}{2023}
+
+\linespread{}
+
+\geometry{a4paper,left=1in, right=1in, top=1in, bottom=1in}
+
+\title{\heiti 矩阵论第三章作业}
+\author{XXX SZ2305XXX}
+\date{2023年7月22日}
+%微软雅黑字体：\CJKfamily{zhyahei}
+
+\renewcommand\arraystretch{0.8}
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+
+\begin{document}
+	\maketitle
+	%	矩阵变换过程如下：
+	\section*{\kaishu 习题2.}
+	\subsection*{(3) \kaishu {解：}}
+	%	\large
+	\[
+	\begin{pmatrix}
+		\lambda+1 & \lambda^2+1 & \lambda^2 \\
+		3\lambda-1 & 3\lambda^2-1 & \lambda^2+2\lambda \\
+		\lambda-1 & \lambda^2-1 & \lambda
+	\end{pmatrix}
+	\xrightarrow{[1+3(-1)]}
+	\begin{pmatrix}
+		2 & 2 & \lambda^2-\lambda \\
+		3\lambda-1 & 3\lambda^2-1 & \lambda^2+2\lambda \\	
+		\lambda-1 & \lambda^2-1 & \lambda
+	\end{pmatrix} \\
+	\]
+	%换行
+	\[
+	\xrightarrow{[2+3(-3)]}
+	\begin{pmatrix}
+		2 & 2 & \lambda^2-\lambda \\
+		2 & 2 & \lambda^2-\lambda \\	
+		\lambda-1 & \lambda^2-1 & \lambda
+	\end{pmatrix}
+	\xrightarrow{[2+1(-1)]}
+	\begin{pmatrix}
+		2 & 2 & \lambda^2-\lambda \\
+		0 & 0 & 0 \\	
+		\lambda-1 & \lambda^2-1 & \lambda
+	\end{pmatrix} \\
+	\]
+	%{\substack{abc \\ \text{above}}}
+	%{[2,3],[1(\frac12)]}
+	% 这里是草稿纸（）
+	\[
+	\xrightarrow{\substack{[2,3] \\ [1(\frac12)]}}
+	\begin{pmatrix}
+		1 & 1 & \frac{\lambda^2-\lambda}{2} \\
+		\lambda-1 & \lambda^2-1 & \lambda \\	
+		0 & 0 & 0
+	\end{pmatrix}
+	\xrightarrow{[2+1(-\lambda+1)]}
+	\begin{pmatrix}
+		1 & 1 & \frac{\lambda^2-\lambda}{2} \\
+		0 & \lambda^2-\lambda & \lambda-\lambda·\frac{(\lambda-1)^2}{2} \\	
+		0 & 0 & 0
+	\end{pmatrix} \\
+	\]
+	\[
+	\xrightarrow[\substack{[2+1(-1)] \\ [3+1(-\frac{\lambda^2-\lambda}{2})]}]{}
+	\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & \lambda^2-\lambda & \lambda-\lambda·\frac{(\lambda-1)^2}{2} \\	
+		0 & 0 & 0
+	\end{pmatrix}
+	\xrightarrow[{[3+2(\frac{-\lambda-1}{2})]}]{}%这里不使用大括号分组会出错，不知道为什么
+	\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & \lambda^2-\lambda & \lambda \\	
+		0 & 0 & 0
+	\end{pmatrix} \\
+	\]
+	\[
+	\xrightarrow[\substack{[2,3] \\ [3+2(-\lambda+1)]}]{}
+	\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & \lambda & 0 \\	
+		0 & 0 & 0
+	\end{pmatrix}
+	\]
+	\qquad 即得$\begin{pmatrix}
+		\lambda+1 & \lambda^2+1 & \lambda^2 \\
+		3\lambda-1 & 3\lambda^2-1 & \lambda^2+2\lambda \\	
+		\lambda-1 & \lambda^2-1 & \lambda
+	\end{pmatrix}$的$Smith$标准形为$\	\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & \lambda & 0 \\	
+	0 & 0 & 0
+	\end{pmatrix}$.
+	\clearpage
+
+
+
+	\section*{\kaishu 习题3.}
+    \subsection*{(3) \kaishu {解：}}
+    %	\large
+    矩阵$\begin{pmatrix}
+    	\lambda & -1 & 0 & 0 \\
+    	0 & \lambda & -1 & 0 \\	
+    	0 & 0 & \lambda & -1 \\
+    	5 & 4 & 3 & \lambda+2
+    \end{pmatrix}$有三阶子式$\begin{vmatrix}
+     -1 & 0 & 0 \\
+     \lambda & -1 & 0 \\	
+     0 & \lambda & -1 
+    \end{vmatrix}=-1$，则该矩阵的第1,2,3阶行列式因子均为1，则该矩阵的第1,2,3阶不变因子也均为1.\\[8pt]
+    %要手动改行间距最好等定稿再改，不然后续操作会影响
+    \indent 
+    又$D_4(\lambda)=\begin{vmatrix}
+    	\lambda & -1 & 0 & 0 \\
+    	0 & \lambda & -1 & 0 \\	
+    	0 & 0 & \lambda & -1 \\
+    	5 & 4 & 3 & \lambda+2
+    \end{vmatrix}=\lambda^4+2\lambda^3+3\lambda^2+4\lambda+5$，其为第四阶行列式因子亦即第四阶初等因子.
+    
+	\indent 方程$\lambda^4+2\lambda^3+3\lambda^2+4\lambda+5=0$有根：$0.2878\pm1.4161i$，$-1.2878\pm0.8579i$.则原矩阵有初等因子$\lambda-(0.2878+1.4161i)$，$\lambda-(0.2878-1.4161i)$，$\lambda-(-1.2878+0.8579i)$，$\lambda-(-1.2878-0.8579i)$.\par
+	\indent \textbf{综上所述}，原矩阵的不变因子为1，1，1，$\lambda^4+2\lambda^3+3\lambda^2+4\lambda+5$；初等因子为$\lambda-(0.2878+1.4161i)$，$\lambda-(0.2878-1.4161i)$，$\lambda-(-1.2878+0.8579i)$，$\lambda-(-1.2878-0.8579i)$.\\
+		
+	\subsection*{(4) \kaishu {解：}}
+	矩阵$\begin{pmatrix}
+		0 & 0 & 1 & \lambda+2 \\
+		0 & 1 & \lambda+2 & 0 \\	
+		1 & \lambda+2 & 0 & 0 \\
+		\lambda+2 & 0 & 0 & 0
+	\end{pmatrix}$有三阶子式$\begin{vmatrix}
+		0 & 0 & 1 \\
+		0 & 1 & \lambda+2 \\	
+		1 & \lambda+2 & 0 
+	\end{vmatrix}=-1$，则该矩阵的第1,2,3阶行列式因子均为1，则该矩阵的第1,2,3阶不变因子也均为1.\\
+	\indent
+	又$D_4(\lambda)=\begin{vmatrix}
+		0 & 0 & 1 & \lambda+2 \\
+		0 & 1 & \lambda+2 & 0 \\	
+		1 & \lambda+2 & 0 & 0 \\
+		\lambda+2 & 0 & 0 & 0
+	\end{vmatrix}=(\lambda+2)^4$，其为第四阶行列式因子,亦即第四阶初等因子.\\[8pt]
+	\indent \textbf{综上所述}，原矩阵的不变因子为1，1，1，$(\lambda+2)^4$；初等因子为$(\lambda+2)^4$.
+	\clearpage
+	
+	
+	\section*{\kaishu 习题4.}
+	\subsection*{\kaishu {解：}}
+	矩阵\[A(\lambda)=\begin{pmatrix}
+		\lambda & 0 & \ldots & 0 & a_{n} \\
+		-1 & \lambda & \ldots & 0 & a_{n-1}\\	
+		\vdots & \vdots &  & \vdots & \vdots \\ 
+		0 & 0 & \ldots & \lambda & a_{2} \\
+		0 & 0 & \ldots & -1 & \lambda+1
+	\end{pmatrix}$有$n-1$阶子式$\begin{vmatrix}
+		-1 & \lambda & \ldots & 0 \\	
+		\vdots & \vdots &  & \vdots & \\ 
+		0 & 0 & \ldots & \lambda \\
+		0 & 0 & \ldots & -1 
+	\end{vmatrix}=-1^{(n-1)}\]%这里使用行内公式符号$会因公式太长了自动换行
+	则$A(\lambda)$有$n-1$阶行列式因子与初等因子均为$1$.\\[8pt]
+%	\[
+		\indent 又 \begin{align*}%这里竟然不要$$符号？！
+		\begin{vmatrix} A(\lambda) \end{vmatrix} 
+		&= \begin{vmatrix}
+		\lambda & 0 & \ldots & 0 & a_{n} \\
+		-1 & \lambda & \ldots & 0 & a_{n-1}\\	
+		\vdots & \vdots &  & \vdots & \vdots \\ 
+		0 & 0 & \ldots & \lambda & a_{2} \\
+		0 & 0 & \ldots & -1 & \lambda+1
+           \end{vmatrix}\text{，其按最后一列展开}\\ %最后一列展开才会简单！！！                  
+    	&= a_n + a_{n-1}\lambda +a_{n-2}\lambda^2 + \ldots + a_2\lambda^{n-2} + (\lambda+a_1)\lambda^{n-1}\\
+    	&= a_n + a_{n-1}\lambda +a_{n-2}\lambda^2 + \ldots + a_2\lambda^{n-2} + a_1\lambda^{n-1} + \lambda^n
+	\end{align*}
+%	\]
+	所得即为$A(\lambda)$的第$n$阶行列式因子与不变因子.\\
+	\textbf{综上所述}，$A(\lambda)$的行列式因子和不变因子均为
+%	\centering
+%：center 等环境会在上下文产生一个额外间距，而\centering 等命令不产生，只是改变对齐方式.
+		\[		\underbrace{1,1,\ldots,1}_\text{$n-1$个},a_n + a_{n-1}\lambda +a_{n-2}\lambda^2 + \ldots + a_2\lambda^{n-2} + a_1\lambda^{n-1} + \lambda^n.	    \]
+		\clearpage
+
+	
+	
+		\section*{\kaishu 习题5.}
+	\subsection*{\kaishu {解：}}
+%	\[
+	\begin{gather*}
+	A(\lambda) = %行末的换行符视为一个空格.空格键和Tab键输入的空白字符视为“空格”.连续的若干个空白字符视为一个空格.（一行开头的空格忽略不计.）
+	\begin{pmatrix}
+	3\lambda+1 & \lambda & 4\lambda-1 \\
+	1-\lambda^2 & \lambda-1 &\lambda-\lambda^2 \\
+	\lambda^2+\lambda+2 & \lambda & \lambda^2+2\lambda
+                 \end{pmatrix}
+	\xrightarrow[{[1+2(-3)]}]{}
+	 \begin{pmatrix}
+	1 & \lambda & 4\lambda-1 \\
+	-\lambda^2-3\lambda+4 & \lambda-1 &\lambda-\lambda^2 \\
+	\lambda^2-2\lambda+2 & \lambda & \lambda^2+2\lambda
+     \end{pmatrix}\\
+     \xrightarrow{\substack{[2+1(\lambda^2+3\lambda-4)] \\ [3+1(-\lambda^2+2\lambda-2)]}}
+     \begin{pmatrix}
+     	1 & \lambda & 4\lambda-1 \\
+     	0 & (\lambda-1)(\lambda^2+4\lambda+1) & 2(\lambda-1)(2\lambda^2+7\lambda-2) \\
+     	0 & -\lambda(\lambda-1)^2 & -2(\lambda-1)^2(2\lambda-1)
+     \end{pmatrix}\\
+     \xrightarrow[\substack{[2+1(-\lambda)] \\ [3+1(-4\lambda+1)] \\ [3(\frac12)]}]{}
+     \xrightarrow{[3(-1)]}
+      \begin{pmatrix}
+     	1 & 0 & 0 \\
+     	0 & (\lambda-1)(\lambda^2+4\lambda+1) & (\lambda-1)(2\lambda^2+7\lambda-2) \\
+     	0 & \lambda(\lambda-1)^2 & (\lambda-1)^2(2\lambda-1)
+     \end{pmatrix}\\
+%     接下来怎么做？？？凑公因式！！！
+%	  注意：公因式($\lambda-1$)不能消掉哦，这可是不变因子！！！
+     \xrightarrow[\substack{[3+2(-2)] \\ [3(-1)]}]{}
+     \begin{pmatrix}
+     	1 & 0 & 0 \\
+     	0 & (\lambda-1)(\lambda^2+4\lambda+1) & (\lambda-1)(\lambda+4) \\
+     	0 & \lambda(\lambda-1)^2 & (\lambda-1)^2
+     \end{pmatrix}\\
+     \xrightarrow[{[2+3(-\lambda)]}]{}
+     \begin{pmatrix}
+     	1 & 0 & 0 \\
+     	0 & (\lambda-1) & (\lambda-1)(\lambda+4) \\
+     	0 & 0 & (\lambda-1)^2
+     \end{pmatrix}
+      \xrightarrow[{[3+2(-\lambda-4)]}]{}
+      \begin{pmatrix}
+      	1 & 0 & 0 \\
+      	0 & (\lambda-1) & 0 \\
+      	0 & 0 & (\lambda-1)^2
+      \end{pmatrix}
+     \end{gather*}
+     \indent 另，有
+     \begin{gather*}
+     B(\lambda) = %行末的换行符视为一个空格.空格键和Tab键输入的空白字符视为“空格”.连续的若干个空白字符视为一个空格.（一行开头的空格忽略不计.）
+     \begin{pmatrix}
+     	\lambda+1 & \lambda-2 & \lambda^2-2\lambda \\
+     	2\lambda & 2\lambda-3 &\lambda^2-2\lambda \\
+     	-2 & 1 & 1
+     \end{pmatrix}
+     %矩阵化简心得：不要把高次方加给低次方，会变复杂！！！要加也最后加！！！
+     \xrightarrow[\substack{ [3+2(-\lambda)] \\ [2+1(-\lambda)] \\ [2(-\frac13)]} ]{}
+     \begin{pmatrix}
+     	\lambda+1 & 1 & 0 \\
+     	2\lambda & 1 & -\lambda+\lambda \\
+     	-2 & -1 & -\lambda+1
+     \end{pmatrix}\\
+     \xrightarrow[\substack{ [1,2] \\ [2+1(-\lambda-1)] } ]{}
+     \begin{pmatrix}
+     	1 & 0 & 0 \\
+     	1 & \lambda-1 & -\lambda^2+\lambda \\
+     	-1 & \lambda-1 & -\lambda+1
+     \end{pmatrix}
+      \xrightarrow{\substack{[2+1(-1)] \\ [3+1(1)] \\ [3+2(-1)]}}
+      \begin{pmatrix}
+      	1 & 0 & 0 \\
+      	0 & \lambda-1 & -\lambda(\lambda-1) \\
+      	0 & 0 & (\lambda-1)^2
+      \end{pmatrix}\\
+      \xrightarrow[{[3+2(\lambda)]}]{}
+      \begin{pmatrix}
+      	1 & 0 & 0 \\
+      	0 & (\lambda-1) & 0 \\
+      	0 & 0 & (\lambda-1)^2
+      \end{pmatrix}
+     \end{gather*}
+%	\]
+    \indent 即$A(\lambda)$与$B(\lambda)$有相同的不变因子，则$A(\lambda)$与$B(\lambda)$相抵.
+    \clearpage
+
+	
+	\section*{\kaishu 习题6.}
+	\subsection*{(1) \kaishu {解：}{\color{red} （答案用的特征值方法也没有讲过）}}
+	\begin{gather*}
+		\lambda I - A = 
+		\begin{pmatrix}
+			\lambda-3 & -2 & 5 \\
+			-2 & \lambda-6 & 10 \\
+			-1 & -2 & \lambda+3
+		\end{pmatrix}
+		\xrightarrow{\substack{[1,3] \\ [1(-1)]}}
+		\begin{pmatrix}
+			1 & 2 & -\lambda-3 \\
+			-2 & \lambda-6 & 10 \\
+			\lambda-3 & -2 & 5
+		\end{pmatrix}	\\
+		\xrightarrow{\substack{[2+1(2)] \\ [3+1(-\lambda+3)]}}
+		\begin{pmatrix}
+			1 & 2 & -\lambda-3 \\
+			0 & \lambda-2 & -2\lambda+4 \\
+			0 & -2\lambda+4 & (\lambda+3)(\lambda-3)+5
+		\end{pmatrix}	
+		\xrightarrow[\substack{[2+1(-2)] \\ [3+1(\lambda+3)]}]{}
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & \lambda-2 & -2(\lambda-2) \\
+			0 & -2(\lambda-2) & (\lambda-2)(\lambda+2)
+		\end{pmatrix}	\\
+		\xrightarrow[{[3+2(2)]}]{[3+2(2)]}
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & \lambda-2 & 0 \\
+			0 & 0 & (\lambda-2)^2
+		\end{pmatrix}\\[8pt]
+		\text{另，有}\\[8pt]%另一种打文字的办法！！！
+		\lambda I - B = 
+		\begin{pmatrix}
+			\lambda-6 & -20 & 34 \\
+			-6 & \lambda-32 & 51 \\
+			-4 & -20 & \lambda+32
+		\end{pmatrix}
+		\xrightarrow{\substack{[1,3] \\ [1(-1)]}}
+		\begin{pmatrix}
+			4 & 20 & -\lambda-32 \\
+			-6 & \lambda-32 & 51 \\
+			\lambda-6 & -20 & 34
+		\end{pmatrix}\\
+		\xrightarrow{[2+1(\frac32)]}
+		\begin{pmatrix}
+			4 & 20 & -\lambda-32 \\
+			0 & \lambda-2 & \frac{-3\lambda+6}{2} \\
+			\lambda-6 & -20 & 34
+		\end{pmatrix}
+		\xrightarrow[{[3+2(\frac32)]}]{}
+		\begin{pmatrix}
+			4 & 20 & -\lambda-2 \\
+			0 & \lambda-2 & 0 \\
+			\lambda-6 & -20 & 4
+		\end{pmatrix}	\\
+		\xrightarrow[]{[3+1(1)]}
+		\xrightarrow[{[3+1(1)]}]{}
+		\begin{pmatrix}
+			4 & 20 & -\lambda-2 \\
+			0 & \lambda-2 & 0 \\
+			\lambda-2 & 0 & 0
+		\end{pmatrix}
+		\xrightarrow[\substack{[2+1(-5)] \\ [3+1(\frac{\lambda-2}{4})]}]{}
+		\begin{pmatrix}
+			4 & 0 & 0 \\
+			0 & \lambda-2 & 0 \\
+			\lambda-2 & -5(\lambda-2) & -\frac14(\lambda-2)
+		\end{pmatrix}	\\
+		\xrightarrow[\substack{[1(\frac14)] \\ [3(4)]}]{\substack{[3+1(\frac{-\lambda+2}{4})] \\ [3+2(5)]}}
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & \lambda-2 & 0 \\
+			0 & 0 & (\lambda-2)^2
+		\end{pmatrix}
+	\end{gather*}
+	\indent 得$\lambda I - A$与$\lambda I - B$相抵，则$A(\lambda)$与$B(\lambda)$相似.
+	\clearpage
+	
+	
+	\section*{\kaishu 习题9.}
+	\subsection*{(1) \kaishu {解：}}
+	记$A = 
+	\begin{pmatrix}
+		2 & 6 & -15 \\
+		1 & 1 & -5 \\
+		1 & 2 & -6
+	\end{pmatrix}$，则有
+	\begin{gather*}
+		\lambda I - A = 
+		\begin{pmatrix}
+			\lambda-2 & -6 & 15 \\
+			-1 & \lambda-1 & 5 \\
+			-1 & -2 & \lambda+6
+		\end{pmatrix}
+		\to
+		\begin{pmatrix}
+			1 & -2 & \lambda+6 \\
+			1 & \lambda-1 & 5 \\
+			-\lambda+2 & -6 & 15
+		\end{pmatrix}	\\
+		\to
+		\begin{pmatrix}
+			1 & -2 & \lambda+6 \\
+			0 & \lambda+1 & -\lambda-1 \\
+			0 & -2\lambda-2 & \lambda^2+4\lambda+3
+		\end{pmatrix}
+		\to
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & \lambda+1 & -(\lambda+1) \\
+			0 & -(2\lambda+1) & (\lambda+1)(\lambda+3)
+		\end{pmatrix}	\\
+		\to
+			\begin{pmatrix}
+			1 &  &  \\
+			 & \lambda+1 & \\
+			 &  & (\lambda+1)^2
+		\end{pmatrix}
+	\end{gather*}
+	\indent 则$A$的初等因子为$\lambda+1$，$(\lambda+1)^2$，故$A$的$Jordan$标准形为\par
+	\begin{ceqn}
+		\begin{align*}
+		J =
+		\begin{pmatrix}
+			-1 & 0 & 0 \\
+			0 & -1 & 1 \\
+			0 & 0 & -1
+		\end{pmatrix} ‎
+		\end{align*}‎
+	\end{ceqn}\\
+	
+	\subsection*{(6) \kaishu {解：}}
+	$\text{记}B = 
+	\begin{pmatrix}
+		1 & 2 & 3 & 4 \\
+		0 & 1 & 2 & 3 \\
+		0 & 0 & 1 & 2 \\
+		0 & 0 & 0 & 1  
+	\end{pmatrix} \text{，则有}
+		\lambda I - B = 
+	\begin{pmatrix}
+			\lambda-1 & -2 & -3 & -4 \\
+			0 & \lambda-1 & -2 & -3 \\
+			0 & 0 & \lambda-1 & -2 \\
+			0 & 0 & 0 & \lambda-1  
+	\end{pmatrix}\text{，}\\ 
+	\indent \text{其有1阶子式-2，2阶子式}
+	\begin{vmatrix}
+		-3 & -4 \\
+		-2 & -3  
+	\end{vmatrix} = 1\text{，3阶子式}
+	\begin{vmatrix}
+		-2 & -3 & -4 \\
+		\lambda-1 & -2 & -3  \\
+		0 & \lambda-1 & -2
+	\end{vmatrix}\\ \indent = -4\lambda(\lambda+1)\text{，}
+	\begin{vmatrix}
+		\lambda-1 & -2 & -3 \\
+		0 & \lambda-1 & -2  \\
+		0 & 0 & \lambda-1
+	\end{vmatrix} = (\lambda-1)^3\text{，二者互质.}\\ \indent  \text{则其前三阶不变因子均为1.} 
+	\text{又有四阶子式}
+	\begin{vmatrix}
+		1 & 2 & 3 & 4 \\
+		0 & 1 & 2 & 3 \\
+		0 & 0 & 1 & 2 \\
+		0 & 0 & 0 & 1  
+	\end{vmatrix} = (\lambda-1)^4.$\\ \par
+	\indent 则矩阵$B$的初等因子为$(\lambda-1)^4$，故$B$的$Jordan$标准形为\par
+	\begin{ceqn}
+		\begin{align*}
+			J =
+			\begin{pmatrix}
+				1 & 1 & 0 & 0 \\
+				0 & 1 & 1 & 0 \\
+				0 & 0 & 1 & 1 \\
+				0 & 0 & 0 & 1
+			\end{pmatrix} ‎
+		\end{align*}‎
+	\end{ceqn}
+	\clearpage
+		
+
+	\section*{\kaishu 习题10.}
+	\subsection*{(1) \kaishu {解：}}
+	$A = 
+	\begin{pmatrix}
+		0 & -4 & 0 \\
+		1 & -4 & 0 \\
+		1 & -2 & -2
+	\end{pmatrix} 
+	%\quad
+	\text{，则}
+		\lambda I - A = 
+	\begin{pmatrix}
+		\lambda & 4 & 0 \\
+		-1 & \lambda+4 & 0 \\
+		-1 & 2 & \lambda+2
+	\end{pmatrix} $ ，对其进行初等变换：\\
+	\[
+	\begin{pmatrix}
+		\lambda & 4 & 0 \\
+		-1 & \lambda+4 & 0 \\
+		-1 & 2 & \lambda+2
+	\end{pmatrix}
+	\xrightarrow{\substack{[3(-1)] \\ [1,3]}}
+	\begin{pmatrix}
+		1 & -2 & -\lambda-2 \\
+		-1 & \lambda+4 & 0 \\
+		\lambda & 4 & 0
+	\end{pmatrix}
+	\xrightarrow{\substack{[2+1(1)] \\ [3+1(\lambda)]}}
+	\]
+	\[
+	\begin{pmatrix}
+		1 & -2 & -\lambda-2 \\
+		0 & \lambda+2 & -\lambda-2 \\
+		0 & 2\lambda+4 & \lambda(\lambda+2)
+	\end{pmatrix}
+	\xrightarrow[\substack{[2+1(2)] \\ [3+1(\lambda+2)]}]{}
+	\xrightarrow{[3+2(-2)]}
+	\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & \lambda+2 & 0 \\
+		0 & 0 & (\lambda+2)^2
+	\end{pmatrix}
+	\]
+	\indent 则$A$的初等因子为$\lambda+2$,$(\lambda+2)^2$，故$A$的$Jordan$标准形为
+%	\[
+	\begin{ceqn}
+		\begin{align*}
+			J =
+			\begin{pmatrix}
+				-2 & 0 & 0 \\
+				0 & -2 & 1 \\
+				0 & 0 & -2
+			\end{pmatrix}
+		\end{align*}‎
+	\end{ceqn}
+%	\]
+	\indent 要求变换矩阵$P$使得$P^{-1}AP=J$，即求$P=(p_1,p_2,p_3)$满足$AP=PJ$，带入$A$、$P$、$J$得：
+	\begin{ceqn}
+		\begin{align*}
+			(Ap_1,Ap_2,Ap_3) = (p_1,p_2,p_3)
+			\begin{pmatrix}
+				-2 & 0 & 0  \\
+				0 & -2 & 1  \\
+				0 & 0 & -2  
+			\end{pmatrix} ‎
+		\end{align*}‎
+	\end{ceqn}
+	\indent 比较上式两边得
+	\begin{ceqn}
+		\begin{align*}
+%			 \left\{
+			 \begin{cases}
+%	\begin{array}{rl}	%创建一个包含两列的数组，r表示右对齐，l表示左对齐.这意味着数组中的第一列将右对齐，第二列将左对齐
+				Ap_1 = -2p_1,\\
+				Ap_2 = -2p_2,\\
+				Ap_3 = p_2 - 2p_3.
+			\end{cases} 
+%			\right.
+		\end{align*}‎
+	\end{ceqn}
+	\indent 由此可见，$p_1$，$p_2$是$A$的对应于特征值-2的两个线性无关的特征向量.\par
+	\indent 从方程组
+	\begin{ceqn}
+		\begin{align*}
+			(2I + A) x = 0 
+		\end{align*}‎
+	\end{ceqn}
+	可求得两个线性无关的特征向量$\xi = \begin{pmatrix}
+	0 \\ 0 \\1
+	\end{pmatrix}$，$\eta = \begin{pmatrix}
+	2 \\ 1 \\0
+	\end{pmatrix}$. \\
+	\indent 取$p_1 = \xi$，$p_2 = k_1\xi + k_2\eta$，其满足方程 $Ap_3 = p_2 - 2p_3$ 有解，记$p_3 = (x_1,x_2,x_3)^T$，即
+	\begin{ceqn}
+		\begin{align*}
+			\begin{pmatrix}
+				2 & -4 & 0 \\
+				1 & -2 & 0 \\
+				1 & -2 & 0
+			\end{pmatrix}
+			\begin{pmatrix}
+				x_1 \\ x_2 \\ x_3 
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				2k_2 \\ k_2 \\ k_1 
+			\end{pmatrix}
+		\end{align*}‎
+	\end{ceqn}
+	有解.容易看出，当$k_2 = k_1$时方程有解，且其解为
+	\begin{ceqn}
+		\begin{align*}
+			x_1 - 2x_2 = k_1 \\
+			x_3\in\mathbb{R}
+		\end{align*}‎
+	\end{ceqn}
+	其中$k_1$为任意非零常数.取$k_1=k_2=1$，可得$p_1 = \xi = \begin{pmatrix}
+		0 \\ 0 \\1
+	\end{pmatrix}$，$p_2 = k_1\xi + k_2\eta = \begin{pmatrix}
+	2 \\ 1 \\1
+	\end{pmatrix}$，取$p_3 = \begin{pmatrix}
+	3 \\ 1 \\0
+	\end{pmatrix}$，则$P = \begin{pmatrix}
+	0 & 2 & 3 \\ 0 & 1 & 1 \\ 1 & 1 & 0
+	\end{pmatrix}$使得$P^{-1}AP=\begin{pmatrix}
+	-2 & 0 & 0 \\
+	0 & -2 & 1 \\
+	0 & 0 & -2
+	\end{pmatrix}$即为所求.\\[8pt]
+	
+	
+	\subsection*{(2) \kaishu {解：}{\color{red} （老师后来讲了不要用特征值这种方法）}} 
+	$A = 
+	\begin{pmatrix}
+		1 & -3 & 4 \\
+		4 & -7 & 8 \\
+		6 & -7 & 7
+	\end{pmatrix} 
+	\text{，则}
+	\lambda I - A = 
+	\begin{pmatrix}
+		\lambda-1 & 3 & -4 \\
+		-4 & \lambda+7 & -8 \\
+		-6 & 7 & \lambda-7
+	\end{pmatrix} $ \text{，有}
+	\begin{ceqn}
+	\begin{align*}
+		\begin{vmatrix}
+			\lambda I - A
+		\end{vmatrix} =
+		\begin{vmatrix}
+			\lambda-1 & 3 & -4 \\
+			-4 & \lambda+7 & -8 \\
+			-6 & 7 & \lambda-7
+		\end{vmatrix} =
+			(\lambda+1)^2(\lambda-3)
+	\end{align*}‎
+	\end{ceqn}
+	因此，$A$有特征值$3$，$-1$，$-1$.\\
+	\indent 又$A+I=
+	\begin{pmatrix}
+		2 & -3 & 4 \\
+		4 & -6 & 8 \\
+		6 & -7 & 8
+	\end{pmatrix}$，显然$r(A+I)=2$，因此$A$的特征值$-1$只对应1个线性无关的特征向量.故$A$的$Jordan$标准形为
+	\begin{ceqn}
+	\begin{align*}
+		J =
+		\begin{pmatrix}
+			3 & 0 & 0 \\
+			0 & -1 & 1 \\
+			0 & 0 & -1
+		\end{pmatrix}
+	\end{align*}‎
+	\end{ceqn}
+	\[\text{{\color{red} （老师后来讲了不要用特征值这种方法。这里后期再算一遍。点击此处插入文字）}}\]
+	对于方程$(3I-A)x=0$，即$
+	\begin{pmatrix}
+		2 & 3 & -4 \\
+		-4 & 10 & -8 \\
+		-6 & 7 & -4
+	\end{pmatrix}
+	\begin{pmatrix}
+		x_1 \\ x_2 \\ x_3
+	\end{pmatrix} = 0$，有解
+	$\xi=\begin{pmatrix}
+		1 \\ 2 \\ 2 
+	\end{pmatrix}$ ；\\
+	对于方程$(-I-A)x=0$，即$
+	\begin{pmatrix}
+		-2 & 3 & -4 \\
+		-4 & 6 & -8 \\
+		-6 & 7 & -8
+	\end{pmatrix}
+	\begin{pmatrix}
+		x_1 \\ x_2 \\ x_3
+	\end{pmatrix} = 0$，有解
+	$\eta=\begin{pmatrix}
+		1 \\ 2 \\ 1 
+	\end{pmatrix}$. \\
+	设可逆矩阵$P=(p_1,p_x,p_3)$满足$P^-1AP=J$，即
+	\begin{ceqn}
+		\begin{align*}
+			(Ap_1,Ap_2,Ap_3) = (p_1,p_2,p_3)
+			\begin{pmatrix}
+				3 & 0 & 0  \\
+				0 & -1 & 1  \\
+				0 & 0 & -1  
+			\end{pmatrix} ‎
+		\end{align*}‎
+	\end{ceqn}
+	\indent 比较上式两边得
+	\begin{ceqn}
+		\begin{align*}
+			\begin{cases}
+					Ap_1 = 3p_1,\\
+					Ap_2 = -p_2,\\
+					Ap_3 = p_2 - p_3.
+				\end{cases} 
+			\end{align*}‎
+		\end{ceqn}
+		\indent 由此可见，$p_1$是$A$对应于特征值3的一个线性无关的特征向量，$p_2$是$A$的对应于特征值-1的一个线性无关的特征向量.故可取$p_1=\xi=\begin{pmatrix}
+			1 \\ 2 \\ 2 
+		\end{pmatrix}$，$p_2=\eta=\begin{pmatrix}
+		1 \\ 2 \\ 1 
+		\end{pmatrix}$，$p_3$满足方程$Ap_3 = p_2 - p_3$ 有解，记$p_3 = (x_1,x_2,x_3)^T$，即
+		\begin{ceqn}
+			\begin{align*}
+				\begin{pmatrix}
+					2 & -3 & 4 \\
+					4 & -6 & 8 \\
+					6 & -7 & 8
+				\end{pmatrix}
+				\begin{pmatrix}
+					x_1 \\ x_2 \\ x_3 
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					1 \\ 2 \\ 1 
+				\end{pmatrix}
+			\end{align*}‎
+		\end{ceqn}
+		有解.而方程显然有解，且其解为
+		\begin{ceqn}
+			\begin{align*}
+				-2 x_1 + x_2 = 1
+			\end{align*}‎
+		\end{ceqn}
+		取自由变量$x_3=1$，解得$x_1=0 \text{，} x_2 = 1$，则$P = \begin{pmatrix}
+			1 & 1 & 0 \\ 2 & 2 & 1 \\ 2 & 1 & 1
+		\end{pmatrix}$使得$P^{-1}AP=\begin{pmatrix}
+			3 & 0 & 0 \\
+			0 & -1 & 1 \\
+			0 & 0 & 1
+		\end{pmatrix}$即为所求.\\
+	
+	
+	\clearpage
+	
+	
+	\section*{\kaishu 习题14.}
+	\subsection*{(1) \kaishu {解：}}
+		记矩阵为$A$
+		\begin{gather*}
+			\lambda I - A = 
+			\begin{pmatrix}
+				\lambda-3 & -1 & 1 \\
+				0 & \lambda-2 & 0 \\
+				-1 & -1 & \lambda-1
+			\end{pmatrix}
+			\xrightarrow{\substack{[3(-1)] \\ [1,3]]}}
+			\begin{pmatrix}
+				1 & 1 & -\lambda+1 \\
+				0 & \lambda-2 & 0 \\
+				\lambda-3 & -1 & 1
+			\end{pmatrix}	\\
+			\xrightarrow{[3+1(-\lambda+3)]}
+			\begin{pmatrix}
+				1 & 1 & -\lambda+1 \\
+				0 & \lambda-2 & 0 \\
+				0 & -\lambda+2 & \lambda^2-4\lambda+4
+			\end{pmatrix}	
+			\xrightarrow[{[2+1(-1)]}]{}
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & \lambda-2 & 0 \\
+				0 & -(\lambda-2) & (\lambda-2)^2
+			\end{pmatrix}	\\
+			\xrightarrow{\substack{[3+1(\lambda-1) \\ [3+2(1)]]}}
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & \lambda-2 & 0 \\
+				0 & 0 & (\lambda-2)^2
+			\end{pmatrix}
+		\end{gather*}
+		\indent 由书本定理3.6.5知，$A$的最小多项式为$(\lambda-2)^2$.\\
+			
+	\subsection*{(2) \kaishu {解：}}
+		记矩阵为$B$
+		\begin{gather*}
+			\lambda I - B = 
+			\begin{pmatrix}
+				\lambda-4 & 2 & -2 \\
+				5 & \lambda-7 & 5 \\
+				6 & -7 & \lambda+4
+			\end{pmatrix}
+			\xrightarrow{[1,2]}
+			\xrightarrow{\substack{[3+1(1)] \\ [2+1(\frac{-\lambda+4}{2})]}}
+			\begin{pmatrix}
+				2 & 0 & 0 \\
+				\lambda-7 & \frac{-\lambda^2+11\lambda-18}{2} & \lambda-2 \\
+				-7 & \frac{7\lambda-16}{2} & \lambda-3
+			\end{pmatrix}\\
+			\xrightarrow[\substack{[1(\frac12)] \\ [2(2)]}]{\substack{[2+1(\frac{-\lambda+7}{2})] \\ [3+1(\frac72)]}}
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & -\lambda^2+11\lambda-18 & \lambda-2 \\
+				0 & 7\lambda-16 & \lambda-3
+			\end{pmatrix}
+			\xrightarrow[]{{[2-3(1)]}}
+			\xrightarrow[{[2,3]}]{}
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & -\lambda^2+4\lambda-2 \\
+				0 & \lambda-3 & 7\lambda-16
+			\end{pmatrix} \\
+			\xrightarrow{[3+2(-\lambda+3)]}
+			\xrightarrow[{[3+2(\lambda^2-4\lambda+2)]}]{}
+			\begin{pmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+		    	0 & 0 & (\lambda-2)(\lambda^2-5\lambda+11)
+			\end{pmatrix}	\\
+		\end{gather*}
+		\indent 由书本定理3.6.5知，$B$的最小多项式为$(\lambda-2)(\lambda^2-5\lambda+11)$.\\
+	
+		\clearpage
+	
+	
+	\section*{\kaishu 习题18.}
+	\subsection*{\kaishu {证：}}
+	记$\varphi(\lambda)=\lambda^2-5\lambda+6$，则$\varphi(\lambda)$是$A$的化零多项式.由书本定理3.6.2知$A$的最小多项式$m(\lambda)$整除$\varphi(\lambda)$.因为$\varphi(\lambda)$没有重根，所以$m(\lambda)$也没有重根.根据书本定理3.6.6知$A$相似于对角矩阵.
+	
+	
+	
+	
+	
+	
+	
+	
+	\end{document}
